@@ -1,0 +1,221 @@
+/* General Page Styling */
+body {
+    background-color: #2b2b2b; /* Dark grey background */
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Prevents unnecessary scrolling */
+}
+
+/* Flexbox container for main content */
+.attack-calculator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Main content layout */
+.attack-main-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px; /* Space between calculator and graph */
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Attack Calculator UI */
+.attack-calculator {
+    background: #3b3b3b; /* Slightly lighter grey */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    flex: 1;
+    min-width: 400px;
+    max-width: 600px;
+}
+
+/* Graph Container */
+.attack-graph-container {
+    background: #3b3b3b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    flex: 1;
+    min-width: 500px;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Ensure input fields and dropdown take up full width */
+.attack-dropdown, 
+.attack-input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: #444;
+    color: white;
+    font-size: 16px;
+    display: block;
+}
+
+/* Dropdown hover & focus effects */
+.attack-dropdown:hover, .attack-dropdown:focus,
+.attack-input:hover, .attack-input:focus {
+    border-color: #777;
+    outline: none;
+}
+
+/* Buttons */
+button {
+    background: #5c5c5c;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+button:hover {
+    background: #707070;
+}
+
+/* Attack List */
+.attack-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+/* Attack Items */
+.attack-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: #4a4a4a;
+    border: 1px solid #666;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    min-width: 350px;
+    box-sizing: border-box;
+}
+
+/* Attack Text */
+.attack-text {
+    flex-grow: 1;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Small Square Remove Button */
+.remove-button {
+    background: none;
+    border: 1px solid red;
+    color: red;
+    cursor: pointer;
+    font-size: 14px;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-button:hover {
+    background: darkred;
+    color: white;
+}
+
+/* Graph Image */
+.attack-graph-container img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Highlight entire box while dragging with reduced opacity */
+.attack-item.dragging {
+    background: #555; /* Darker shade of grey */
+    opacity: 0.9; /* Slightly reduced opacity for better visibility */
+    transition: background 0.2s ease-in-out;
+}
+
+/* Ensure remove button stays at the rightmost */
+.attack-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Attack input placeholder styling */
+.attack-input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Ensure dropdown and input are the same size */
+.attack-dropdown,
+.attack-input {
+    width: 100%;
+    padding: 12px; /* Slightly increased padding for better alignment */
+    margin: 5px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: #444;
+    color: white;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures consistent width including padding and border */
+}
+
+/* Ensure dropdown aligns correctly */
+.attack-dropdown {
+    appearance: none; /* Removes default browser styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Fix misalignment issue */
+.attack-dropdown:hover,
+.attack-dropdown:focus,
+.attack-input:hover,
+.attack-input:focus {
+    border-color: #777;
+    outline: none;
+}
+
+/* Make sure buttons take full width for consistency */
+button {
+    width: 100%;
+}
+
+/* Increase size of the generated graph */
+.attack-graph-image {
+    width: 100%; /* Adjusts to fit the container */
+    max-width: 600px; /* Ensures it doesn’t get too large */
+    height: auto; /* Maintains aspect ratio */
+    margin-top: 10px;
+}
+
+

@@ -1,0 +1,44 @@
+[
+  {
+    "ContainingType": "MyWebApp.Controllers.AttackController",
+    "Method": "Get",
+    "RelativePath": "api/Attack",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyWebApp.Controllers.AttackController",
+    "Method": "CalculateDamageAndGenerateGraph",
+    "RelativePath": "api/Attack/calculate-damage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "MyWebApp.Models.AttackRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyWebApp.Controllers.AttackController",
+    "Method": "InitializeDecks",
+    "RelativePath": "api/Attack/initialize-decks",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "deckRequest",
+        "Type": "MyWebApp.Controllers.InitializeDeckRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
