@@ -11,6 +11,26 @@
   },
   {
     "ContainingType": "MyWebApp.Controllers.AttackController",
+    "Method": "GetBasicMethods",
+    "RelativePath": "api/Attack/basic-methods",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String[]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyWebApp.Controllers.AttackController",
     "Method": "CalculateDamageAndGenerateGraph",
     "RelativePath": "api/Attack/calculate-damage",
     "HttpMethod": "POST",
@@ -24,6 +44,26 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyWebApp.Controllers.AttackController",
+    "Method": "GetFinisherMethods",
+    "RelativePath": "api/Attack/finisher-methods",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String[]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "MyWebApp.Controllers.AttackController",

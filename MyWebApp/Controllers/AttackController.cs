@@ -4,6 +4,7 @@ using MyWebApp.Models;
 using MyWebApp.Services;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 namespace MyWebApp.Controllers
 {
@@ -63,7 +64,7 @@ namespace MyWebApp.Controllers
         [HttpPost("initialize-decks")]
         public IActionResult InitializeDecks([FromBody] InitializeDeckRequest deckRequest)
         {
-            Console.WriteLine("Controller Called");
+            //Console.WriteLine("Controller Called");
             // Validate the deck initialization request
             if (deckRequest == null || deckRequest.OppDeckInfo == null || deckRequest.SelfDeckInfo == null || deckRequest.Opp2ndDeckInfo == null)
             {
@@ -84,6 +85,31 @@ namespace MyWebApp.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpGet("basic-methods")]
+        public ActionResult<string[]> GetBasicMethods()
+        {
+            var damageMethods = typeof(Damages)
+                .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)
+                .Select(m => m.Name)
+                .Distinct()
+                .ToArray();
+
+            return Ok(damageMethods);
+        }
+
+        [HttpGet("finisher-methods")]
+        public ActionResult<string[]> GetFinisherMethods()
+        {
+            var finisherMethods = typeof(Finishers)
+                .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)
+                .Select(m => m.Name)
+                .Distinct()
+                .ToArray();
+
+            return Ok(finisherMethods);
+        }
+
     }
 
     // Request model to initialize the decks

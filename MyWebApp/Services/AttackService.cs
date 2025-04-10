@@ -5,6 +5,7 @@ using OxyPlot.Series;
 using OxyPlot.Axes;
 using OxyPlot.Annotations;
 using OxyPlot.WindowsForms;
+using System.Text.Json;
 
 namespace MyWebApp.Services
 {
@@ -15,6 +16,7 @@ namespace MyWebApp.Services
         private List<Card> selfDeck;
         private List<Card> opp2ndDeck;
         public Damages? damages;
+        public Finishers? finishers;
 
         // To keep track of the original DeckInfo for reinitialization in SimulateDamage
         private DeckInfo originalOppDeckInfo;
@@ -50,6 +52,7 @@ namespace MyWebApp.Services
 
             // Initialize the damages service with the created decks
             damages = new Damages(oppDeck, selfDeck, oppDeckInfo, selfDeckInfo, opp2ndDeckInfo);
+            finishers = new Finishers(damages);
         }
 
         public byte[] CalculateDamageAndGenerateGraph(AttackRequest request)
@@ -150,7 +153,7 @@ namespace MyWebApp.Services
                 foreach (var attackPair in attackPairs)
                 {
                     // Dynamically invoke the appropriate attack method using reflection
-                    damage += CallDamageMethod(damages, attackPair.AttackName, attackPair.Value);
+                    damage += CallDamageMethod(damages, finishers, attackPair.AttackName, attackPair.Args);
                 }
 
                 // Store the result of this simulation
@@ -172,31 +175,71 @@ namespace MyWebApp.Services
             return percentages;
         }
 
-        private static int CallDamageMethod(Damages damages, string attackName, int value)
+        private static int CallDamageMethod(Damages damages, Finishers? finishers, string methodName, object[] args)
         {
-            // Ensure that 'damages' is not null
-            if (damages == null)
+            object target = damages;
+            Type type = typeof(Damages);
+
+            if (finishers != null && typeof(Finishers).GetMethod(methodName) != null)
             {
-                Console.WriteLine("Damages instance cannot be null.");
+                target = finishers;
+                type = typeof(Finishers);
+            }
+
+            MethodInfo? method = type.GetMethod(methodName);
+            if (method == null)
+            {
+                Console.WriteLine($"Method '{methodName}' not found.");
                 return 0;
             }
 
-            // Get the type of the Damages class
-            Type damagesType = typeof(Damages);
+            ParameterInfo[] parameters = method.GetParameters();
+            object[] convertedArgs = new object[parameters.Length];
 
-            // Get the method information for the provided attackName
-            MethodInfo methodInfo = damagesType.GetMethod(attackName, BindingFlags.Public | BindingFlags.Instance);
-
-            if (methodInfo != null)
+            for (int i = 0; i < parameters.Length; i++)
             {
-                // Invoke the method dynamically with the provided value as an argument
-                return (int)methodInfo.Invoke(damages, new object[] { value });
+                object rawArg = args[i];
+                Type targetType = parameters[i].ParameterType;
+
+                try
+                {
+                    if (rawArg is JsonElement jsonElement)
+                    {
+                        // Extract based on expected parameter type
+                        if (targetType == typeof(int))
+                            convertedArgs[i] = jsonElement.GetInt32();
+                        else if (targetType == typeof(float))
+                            convertedArgs[i] = jsonElement.GetSingle();
+                        else if (targetType == typeof(string))
+                            convertedArgs[i] = jsonElement.GetString();
+                        else if (targetType == typeof(bool))
+                            convertedArgs[i] = jsonElement.GetBoolean();
+                        else
+                            convertedArgs[i] = JsonSerializer.Deserialize(jsonElement.GetRawText(), targetType);
+                    }
+                    else
+                    {
+                        convertedArgs[i] = Convert.ChangeType(rawArg, targetType);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Argument conversion failed for '{methodName}' parameter {i}: {ex.Message}");
+                    return 0;
+                }
             }
-            else
+
+            try
             {
-                Console.WriteLine($"Method {attackName} not found in Damages.");
-                return 0; // Return 0 if the method is not found
+                return (int)method.Invoke(target, convertedArgs);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error invoking '{methodName}': {ex.Message}");
+                return 0;
             }
         }
+
+
     }
 }

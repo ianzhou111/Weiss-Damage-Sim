@@ -1,0 +1,73 @@
+## Build output
+bin/
+obj/
+[Bb]uild/
+[Bb]uild[Ll]og.*
+
+## Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Rider / JetBrains
+.idea/
+*.sln.iml
+
+## ASP.NET Core secrets
+secrets.json
+appsettings.Development.json
+appsettings.Local.json
+.env
+
+## Packages
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.dll
+*.exe
+
+## Test results
+TestResults/
+*.testsettings
+*.vsmdi
+*.psess
+*.vsp
+*.vspx
+*.coverage
+*.coveragexml
+
+## Logs
+*.log
+
+## Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+## Code analysis
+*.ruleset
+*.editorconfig
+
+## Backup & temporary files
+*.bak
+*.tmp
+*.cache
+*.orig
+*.swp
+
+## VS Code
+.vscode/
+
+## Graphs, plots, exports
+*.png
+*.jpg
+*.svg
+*.pdf
+*.xlsx
+
+## Others
+.DS_Store
+Thumbs.db
