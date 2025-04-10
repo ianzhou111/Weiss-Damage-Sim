@@ -87,28 +87,40 @@ namespace MyWebApp.Controllers
         }
 
         [HttpGet("basic-methods")]
-        public ActionResult<string[]> GetBasicMethods()
+        public ActionResult<object[]> GetBasicMethods()
         {
-            var damageMethods = typeof(Damages)
+            var methodData = typeof(Damages)
                 .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)
-                .Select(m => m.Name)
-                .Distinct()
+                .Select(m => new
+                {
+                    Method = m.Name,
+                    Parameters = m.GetParameters()
+                                 .Select(p => $"{p.ParameterType.Name} {p.Name}")
+                                 .ToArray()
+                })
                 .ToArray();
 
-            return Ok(damageMethods);
+            return Ok(methodData);
         }
+
 
         [HttpGet("finisher-methods")]
-        public ActionResult<string[]> GetFinisherMethods()
+        public ActionResult<object[]> GetFinisherMethods()
         {
-            var finisherMethods = typeof(Finishers)
+            var methodData = typeof(Finishers)
                 .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)
-                .Select(m => m.Name)
-                .Distinct()
+                .Select(m => new
+                {
+                    Method = m.Name,
+                    Parameters = m.GetParameters()
+                                 .Select(p => $"{p.ParameterType.Name} {p.Name}")
+                                 .ToArray()
+                })
                 .ToArray();
 
-            return Ok(finisherMethods);
+            return Ok(methodData);
         }
+
 
     }
 

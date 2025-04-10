@@ -19,7 +19,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.String[]",
+        "Type": "System.Object[]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -55,7 +55,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.String[]",
+        "Type": "System.Object[]",
         "MediaTypes": [
           "text/plain",
           "application/json",

@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\controllers\\attackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|solutionrelative:controllers\\attackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\services\\attackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|solutionrelative:services\\attackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\models\\attackrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|solutionrelative:models\\attackrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\controllers\\attackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|solutionrelative:controllers\\attackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\damages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,17 +42,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AttackService.cs",
               "DocumentMoniker": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Services\\AttackService.cs",
               "RelativeDocumentMoniker": "Services\\AttackService.cs",
               "ToolTip": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Services\\AttackService.cs",
               "RelativeToolTip": "Services\\AttackService.cs",
-              "ViewState": "AgIAAKIAAAAAAAAAAAAswLgAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAowNIAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-05T19:39:55.175Z",
               "IsPinned": true,
@@ -72,13 +72,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "AttackController.cs",
               "DocumentMoniker": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Controllers\\AttackController.cs",
               "RelativeDocumentMoniker": "Controllers\\AttackController.cs",
               "ToolTip": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Controllers\\AttackController.cs",
               "RelativeToolTip": "Controllers\\AttackController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAwAYAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAkwGgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-05T22:28:57.483Z",
               "EditorCaption": ""
@@ -135,7 +135,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AttackRequest.cs",
               "DocumentMoniker": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Models\\AttackRequest.cs",
               "RelativeDocumentMoniker": "Models\\AttackRequest.cs",

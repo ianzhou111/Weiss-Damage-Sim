@@ -3,7 +3,7 @@ import { DeckContext } from "./DeckContext";
 import axios from "axios";
 
 const SetupDecks = () => {
-  const { decks, setDecks } = useContext(DeckContext);
+  const { decks, setDecks, resetToDefaults } = useContext(DeckContext);
 
   const calculateTotalCards = (deck) => {
     return (
@@ -81,6 +81,13 @@ const SetupDecks = () => {
         >
           Submit Deck Info
         </button>
+        <button
+          className="mt-3 w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2 rounded"
+          onClick={() => resetToDefaults()}
+        >
+          Reset to Default
+        </button>
+
       </div>
     </div>
   );
