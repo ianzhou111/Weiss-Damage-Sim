@@ -1,7 +1,8 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyWebApp.Services;
+using System.IO;
 
 namespace MyWebApp
 {
@@ -9,48 +10,78 @@ namespace MyWebApp
     {
         public static void Main(string[] args)
         {
-            // Create and run the application
             var builder = WebApplication.CreateBuilder(args);
+
+            // 👇 Flip this manually: true = local dev, false = production
+            bool isLocal = false;
 
             // Register services
             builder.Services.AddControllers();
-            builder.Services.AddSingleton<AttackService>(); // Register AttackService
+            builder.Services.AddSingleton<AttackService>();
 
-            // Configure CORS
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowLocalhost", policy =>
+                if (isLocal)
                 {
-                    policy.WithOrigins("http://localhost:5173") // Allow your frontend's URL
-                          .AllowAnyMethod()
-                          .AllowAnyHeader()
-                          .AllowCredentials();
-                });
+                    options.AddPolicy("LocalDev", policy =>
+                    {
+                        policy.WithOrigins("http://localhost:5173")
+                              .AllowAnyMethod()
+                              .AllowAnyHeader()
+                              .AllowCredentials();
+                    });
+                }
+                else
+                {
+                    options.AddPolicy("AllowAll", policy =>
+                    {
+                        policy.AllowAnyOrigin()
+                              .AllowAnyMethod()
+                              .AllowAnyHeader();
+                    });
+                }
             });
 
             var app = builder.Build();
 
-            // Configure middleware pipeline
-            app.UseCors("AllowLocalhost"); // Apply CORS policy
-
-            // Redirect HTTP to HTTPS but exclude preflight (OPTIONS) requests
-            app.Use((context, next) =>
+            if (isLocal)
             {
-                if (!context.Request.IsHttps && context.Request.Method != "OPTIONS")
-                {
-                    context.Response.Redirect("https://localhost:5240" + context.Request.Path);
-                    return Task.CompletedTask;
-                }
-                return next();
-            });
+                app.UseCors("LocalDev");
 
-            // Use HTTPS redirection only for non-preflight requests
-            app.UseHttpsRedirection();
+                // Optional: local HTTPS redirect override
+                app.Use(async (context, next) =>
+                {
+                    if (!context.Request.IsHttps && context.Request.Method != "OPTIONS")
+                    {
+                        context.Response.Redirect("https://localhost:5240" + context.Request.Path);
+                        return;
+                    }
+                    await next();
+                });
+            }
+            else
+            {
+                app.UseCors("AllowAll");
+                app.UseHttpsRedirection();
+            }
+
+            // Serve static React app
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseRouting();
-            app.MapControllers(); // Maps controllers to routes
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
-            // Run the application
+            // React SPA fallback route
+            app.Run(async (context) =>
+            {
+                context.Response.ContentType = "text/html";
+                await context.Response.SendFileAsync(Path.Combine("wwwroot", "index.html"));
+            });
+
             app.Run();
         }
     }

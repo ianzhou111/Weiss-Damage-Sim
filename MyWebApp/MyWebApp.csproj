@@ -4,12 +4,32 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Ensure publish goes into a clean directory -->
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1" />
     <PackageReference Include="OxyPlot.WindowsForms" Version="2.2.0" />
     <PackageReference Include="System.Drawing.Common" Version="9.0.1" />
+  </ItemGroup>
+
+  <!-- Run npm install and build the frontend before publish -->
+  <Target Name="PrepublishFrontend" BeforeTargets="PrepareForPublish">
+    <Message Importance="high" Text="📦 Installing and building React frontend..." />
+    <Exec Command="npm install" WorkingDirectory="$(SpaRoot)" />
+    <Exec Command="npm run build" WorkingDirectory="$(SpaRoot)" />
+    <Message Importance="high" Text="✅ React build complete. Copying to wwwroot..." />
+    <RemoveDir Directories="wwwroot" />
+    <MakeDir Directories="wwwroot" />
+    <Copy SourceFiles="@(ReactBuildFiles)" DestinationFolder="wwwroot\%(RecursiveDir)" />
+  </Target>
+
+  <!-- Tell MSBuild which files to copy -->
+  <ItemGroup>
+    <ReactBuildFiles Include="$(SpaRoot)dist\**\*" />
   </ItemGroup>
 
 </Project>
