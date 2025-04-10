@@ -7,6 +7,7 @@ import { AttackProvider } from "./components/AttackContext.jsx"; // Import Conte
 import "./App.css";
 import { DeckProvider } from "./components/DeckContext.jsx";
 
+
 function App() {
   return (
     <DeckProvider>
@@ -24,6 +25,7 @@ function App() {
         </Router>
       </AttackProvider>
     </DeckProvider>
+    
   );
 }
 

@@ -94,6 +94,11 @@ const AttackCalculator = () => {
             >
               <option value="Swing">Swing</option>
               <option value="Burn">Burn</option>
+              <option value="ClockKick">ClockKick</option>
+              <option value="MusashiBurn">MusashiBurn</option>
+              <option value="Kana">Kana</option>
+              <option value="Kana_Moca">Kana_Moca</option>
+              <option value="Kana_Burn">Kana_Burn</option>
             </select>
             <input
               type="number"
