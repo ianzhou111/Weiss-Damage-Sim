@@ -25,7 +25,7 @@ namespace MyWebApp
         }
 
         // Deck refresh function
-        public int Refresh()
+        public int _refresh()
         {
             oppDeck.Clear();
             // Add CX and DMG cards to the opponent's deck based on the DeckInfo
@@ -69,7 +69,7 @@ namespace MyWebApp
             {
                 if (oppDeck.Count == 0)
                 {
-                    refreshPenalty += Refresh();
+                    refreshPenalty += _refresh();
                 }
                 if (oppDeck[0].Type == Card.CardType.DMG)
                 {
@@ -87,7 +87,7 @@ namespace MyWebApp
 
             if (oppDeck.Count == 0)
             {
-                refreshPenalty += Refresh();
+                refreshPenalty += _refresh();
             }
 
             return swingDamage + refreshPenalty;
@@ -108,7 +108,7 @@ namespace MyWebApp
             {
                 if (oppDeck.Count == 0)
                 {
-                    refreshPenalty += Refresh();
+                    refreshPenalty += _refresh();
                 }
                 if (oppDeck[0].Type == Card.CardType.DMG)
                 {
@@ -126,7 +126,7 @@ namespace MyWebApp
 
             if (oppDeck.Count == 0)
             {
-                refreshPenalty += Refresh();
+                refreshPenalty += _refresh();
             }
 
             return swingDamage + refreshPenalty;
@@ -143,7 +143,7 @@ namespace MyWebApp
             {
                 if (oppDeck.Count == 0)
                 {
-                    refreshPenalty += Refresh();
+                    refreshPenalty += _refresh();
                 }
                 if (oppDeck[0].Type == Card.CardType.DMG)
                 {
@@ -161,7 +161,7 @@ namespace MyWebApp
 
             if (oppDeck.Count == 0)
             {
-                refreshPenalty += Refresh();
+                refreshPenalty += _refresh();
             }
 
             return burnDamage + refreshPenalty;
@@ -187,7 +187,7 @@ namespace MyWebApp
                 }
 
                 // Refresh the opponent's deck after it gets emptied
-                Refresh();
+                _refresh();
 
                 // Add the remaining cards requested from the top of the new refreshed deck
                 count -= cardsToMill;
@@ -226,7 +226,7 @@ namespace MyWebApp
                 }
 
                 // Refresh the opponent's deck after it gets emptied
-                Refresh();
+                _refresh();
 
                 // Add the remaining cards requested from the top of the new refreshed deck
                 count -= cardsToMill;
@@ -265,7 +265,7 @@ namespace MyWebApp
                 }
 
                 // Refresh the opponent's deck after it gets emptied
-                Refresh();
+                _refresh();
 
                 // Add the remaining cards requested from the top of the new refreshed deck
                 count -= cardsToMill;
@@ -304,7 +304,7 @@ namespace MyWebApp
                 }
 
                 // Refresh the opponent's deck after it gets emptied
-                Refresh();
+                _refresh();
 
                 // Add the remaining cards requested from the top of the new refreshed deck
                 count -= cardsToMill;
@@ -423,7 +423,7 @@ namespace MyWebApp
             int refreshPenalty = 0;
             if (oppDeck.Count == 0)
             {
-                refreshPenalty += Refresh();
+                refreshPenalty += _refresh();
             }
             for(int i = 0; i < amount; i++)
             {
@@ -434,7 +434,7 @@ namespace MyWebApp
 
         
 
-        public void Moca(int amount)
+        public int Moca(int amount)
         {
             var listCards = new List<Card>();
             for (int i = 0; i < amount; i++)
@@ -444,6 +444,15 @@ namespace MyWebApp
                     oppDeck.RemoveAt(i);
                 }
             }
+            return 0;
+        }
+
+        public int Shuffle_Back_Non_CX(int amount)
+        {
+            for (int i = 0; i < amount; i++)
+                oppDeck.Add(new Card(Card.CardType.DMG, 0, 0));
+            ShuffleOppDeck();
+            return 0;
         }
 
         private void shuffleDeck(List<Card> deck)
