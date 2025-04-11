@@ -458,13 +458,13 @@ namespace MyWebApp
         }
 
         // Call this to reset cancel flag externally
-        public void ResetCancelFlag()
+        public void _resetCancelFlag()
         {
             damageCanceled = false;
         }
 
         // Expose internal decks if absolutely necessary
-        public List<Card> OppDeck => oppDeck;
+        public List<Card> _oppDeck => oppDeck;
         public void ShuffleOppDeck()
         {
             shuffleDeck(oppDeck);
@@ -472,6 +472,6 @@ namespace MyWebApp
 
 
         // Optional: Getter for damageCanceled
-        public bool DamageCanceled => damageCanceled;
+        public bool _damageCanceled => damageCanceled;
     }
 }

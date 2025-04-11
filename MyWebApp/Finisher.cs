@@ -17,9 +17,9 @@ namespace MyWebApp
         {
             int swing = damages.Swing(soul);
             int burn = 0;
-            if (damages.DamageCanceled)
+            if (damages._damageCanceled)
             {
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 burn += damages.IcyTail_Ping_lv0(3, 2);
             }
             return burn + swing;
@@ -29,18 +29,18 @@ namespace MyWebApp
         {
             bool canceledOnce = false;
             int burn = damages.Burn(3);
-            if (damages.DamageCanceled)
+            if (damages._damageCanceled)
             {
                 canceledOnce = true;
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 burn += damages.IcyTail_Ping_lv0(3, 2);
             }
 
             int swing = damages.Swing(soul);
 
-            if (damages.DamageCanceled && !canceledOnce)
+            if (damages._damageCanceled && !canceledOnce)
             {
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 burn += damages.IcyTail_Ping_lv0(3, 2);
             }
 
@@ -49,7 +49,7 @@ namespace MyWebApp
 
         public int Kana_Moca(int soul)
         {
-            var oppDeck = damages.OppDeck;
+            var oppDeck = damages._oppDeck;
             if (oppDeck[0].Type == Card.CardType.CX)
             {
                 var card = oppDeck[0];
@@ -59,9 +59,9 @@ namespace MyWebApp
             soul += 1;
             int swing = damages.Swing(soul);
             int burn = 0;
-            if (damages.DamageCanceled)
+            if (damages._damageCanceled)
             {
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 burn += damages.IcyTail_Ping_lv0(3, 2);
             }
             return burn + swing;
@@ -70,9 +70,9 @@ namespace MyWebApp
         public int Ruby(int soul)
         {
             int burn = damages.Burn(2);
-            if (damages.DamageCanceled)
+            if (damages._damageCanceled)
             {
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 burn += damages.Burn(2);
             }
             return burn + damages.Swing(soul);
@@ -103,17 +103,17 @@ namespace MyWebApp
             int newSoul;
             int swing = damages.Swing_ReturnSoul(soul, out newSoul);
 
-            if (damages.DamageCanceled)
+            if (damages._damageCanceled)
             {
                 canceled = true;
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 burn += damages.MusashiBurn_Mill(1);
             }
 
             swing += damages.Swing(newSoul);
-            if (damages.DamageCanceled && !canceled)
+            if (damages._damageCanceled && !canceled)
             {
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 burn += damages.MusashiBurn_Mill(1);
             }
 
@@ -126,9 +126,9 @@ namespace MyWebApp
             int newSoul;
             int swing = damages.Swing_ReturnSoul(soul, out newSoul);
 
-            if (damages.DamageCanceled)
+            if (damages._damageCanceled)
             {
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 burn += damages.MusashiBurn_Mill(1);
             }
 
@@ -189,7 +189,7 @@ namespace MyWebApp
             swing += damages.Swing_ReturnSoul(soul, out newSoul);
 
             for (int i = 0; i < 3; i++)
-                damages.OppDeck.Add(new Card(Card.CardType.DMG, 0, 0));
+                damages._oppDeck.Add(new Card(Card.CardType.DMG, 0, 0));
             damages.ShuffleOppDeck();
 
             swing += damages.Swing(newSoul);
@@ -201,14 +201,14 @@ namespace MyWebApp
             int swing = damages.Swing(soul);
             int burn = 0;
 
-            if (damages.DamageCanceled)
+            if (damages._damageCanceled)
             {
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 burn += damages.Burn(3);
             }
-            if (damages.DamageCanceled)
+            if (damages._damageCanceled)
             {
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 burn += damages.Burn(1);
             }
 
@@ -225,13 +225,13 @@ namespace MyWebApp
         public int Kajyu(int soul)
         {
             int burn = damages.Burn(2);
-            if (damages.DamageCanceled)
+            if (damages._damageCanceled)
             {
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 burn += damages.Burn(2);
-                if (damages.DamageCanceled)
+                if (damages._damageCanceled)
                 {
-                    damages.ResetCancelFlag();
+                    damages._resetCancelFlag();
                     burn += damages.Burn(2);
                 }
             }
@@ -243,41 +243,41 @@ namespace MyWebApp
             int swing = 0, burn = 0, pass1 = 0, pass2 = 0, pass3 = 0, curSoul;
 
             swing += damages.Swing_ReturnSoul(soul, out curSoul);
-            if (damages.DamageCanceled)
+            if (damages._damageCanceled)
             {
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 burn += damages.Burn(curSoul);
-                if (damages.DamageCanceled) { damages.ResetCancelFlag(); pass1++; }
+                if (damages._damageCanceled) { damages._resetCancelFlag(); pass1++; }
             }
 
             swing += damages.Swing_ReturnSoul(soul, out curSoul);
-            if (damages.DamageCanceled)
+            if (damages._damageCanceled)
             {
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 pass1++;
                 for (int i = 0; i < pass1; i++)
                 {
                     burn += damages.Burn(curSoul);
-                    if (damages.DamageCanceled) { damages.ResetCancelFlag(); pass2++; }
+                    if (damages._damageCanceled) { damages._resetCancelFlag(); pass2++; }
                 }
             }
 
             swing += damages.Swing_ReturnSoul(soul, out curSoul);
-            if (damages.DamageCanceled)
+            if (damages._damageCanceled)
             {
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 pass2++;
                 for (int i = 0; i < pass2; i++)
                 {
                     burn += damages.Burn(curSoul);
-                    if (damages.DamageCanceled) { damages.ResetCancelFlag(); pass3++; }
+                    if (damages._damageCanceled) { damages._resetCancelFlag(); pass3++; }
                 }
             }
 
             burn += damages.Burn(2);
-            if (damages.DamageCanceled)
+            if (damages._damageCanceled)
             {
-                damages.ResetCancelFlag();
+                damages._resetCancelFlag();
                 for (int i = 0; i < pass3; i++)
                     swing += damages.Burn(2);
             }
