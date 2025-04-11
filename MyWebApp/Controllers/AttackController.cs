@@ -103,6 +103,7 @@ namespace MyWebApp.Controllers
         {
             var methodData = typeof(Damages)
                 .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)
+                .Where(m => !m.Name.StartsWith("_")) // 🚫 Exclude internal/private-style methods
                 .Select(m => new
                 {
                     Method = m.Name,
@@ -114,13 +115,13 @@ namespace MyWebApp.Controllers
 
             return Ok(methodData);
         }
-
 
         [HttpGet("finisher-methods")]
         public ActionResult<object[]> GetFinisherMethods()
         {
             var methodData = typeof(Finishers)
                 .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)
+                .Where(m => !m.Name.StartsWith("_")) // 🚫 Exclude internal/private-style methods
                 .Select(m => new
                 {
                     Method = m.Name,
@@ -132,6 +133,7 @@ namespace MyWebApp.Controllers
 
             return Ok(methodData);
         }
+
 
 
     }

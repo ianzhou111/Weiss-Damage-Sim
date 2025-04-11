@@ -232,6 +232,12 @@ namespace MyWebApp.Services
                 return 0;
             }
 
+            if (method.Name.StartsWith("_") || method.Name.StartsWith("Internal"))
+            {
+                Console.WriteLine($"Blocked attempt to invoke internal method: {method.Name}");
+                return 0;
+            }
+
             object[] convertedArgs = new object[parameters.Length];
 
             for (int i = 0; i < parameters.Length; i++)

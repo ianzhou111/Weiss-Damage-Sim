@@ -81,7 +81,7 @@ namespace MyWebApp
         public int Tsuzuri(int soul)
         {
             int refresh = 0;
-            var (removed, didRefresh) = damages.Mill_Bottom(3);
+            var (removed, didRefresh) = damages._millBottom(3);
             if (didRefresh) refresh += 1;
 
             bool hitCx = removed.Exists(card => card.Type == Card.CardType.CX);
@@ -149,7 +149,7 @@ namespace MyWebApp
 
         public int Mai_icy(int count, int damage)
         {
-            var (removed, refreshed) = damages.Mill_Bottom(count);
+            var (removed, refreshed) = damages._millBottom(count);
             bool hasCx = removed.Exists(c => c.Type == Card.CardType.CX);
             int burn = hasCx ? damages.Burn(damage) : 0;
             return burn + (refreshed ? 1 : 0);
@@ -160,7 +160,7 @@ namespace MyWebApp
             int burn = 0, refresh = 0;
             for (int i = 0; i < 3; i++)
             {
-                var (removed, r) = damages.Mill_Bottom(1);
+                var (removed, r) = damages._millBottom(1);
                 if (r) refresh++;
                 if (removed[0].Level == 0)
                     burn += damages.Burn(1);
@@ -177,7 +177,7 @@ namespace MyWebApp
         public int Mill_Top_IcyTail(int soul)
         {
             int swing = damages.Swing(soul);
-            var (removed, refresh) = damages.Mill_Top(4);
+            var (removed, refresh) = damages._millTop(4);
             int burnCount = removed.Count(c => c.Type == Card.CardType.CX);
             return swing + damages.Burn(burnCount) + (refresh ? 1 : 0);
         }

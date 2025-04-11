@@ -167,7 +167,7 @@ namespace MyWebApp
             return burnDamage + refreshPenalty;
         }
 
-        public (List<Card> removedCards, bool causedRefresh) Mill_Bottom(int count)
+        public (List<Card> removedCards, bool causedRefresh) _millBottom(int count)
         {
             List<Card> removedCards = new List<Card>();
             bool causedRefresh = false;
@@ -206,7 +206,46 @@ namespace MyWebApp
             return (removedCards, causedRefresh);
         }
 
-        public (List<Card> removedCards, bool causedRefresh) Mill_Top(int count)
+        public int Mill_Bottom(int count)
+        {
+            List<Card> removedCards = new List<Card>();
+            bool causedRefresh = false;
+
+            // Check if the requested count exceeds the number of cards in the opponent's deck
+            if (count > oppDeck.Count)
+            {
+                // If so, trigger a deck refresh
+                causedRefresh = true;
+                int cardsToMill = oppDeck.Count;
+
+                // Remove all the cards from the deck
+                for (int i = 0; i < cardsToMill; i++)
+                {
+                    removedCards.Add(oppDeck[oppDeck.Count - 1]);
+                    oppDeck.RemoveAt(oppDeck.Count - 1);
+                }
+
+                // Refresh the opponent's deck after it gets emptied
+                Refresh();
+
+                // Add the remaining cards requested from the top of the new refreshed deck
+                count -= cardsToMill;
+            }
+
+            // Continue removing the remaining cards if necessary
+            for (int i = 0; i < count; i++)
+            {
+                if (oppDeck.Count > 0)
+                {
+                    removedCards.Add(oppDeck[oppDeck.Count - 1]);
+                    oppDeck.RemoveAt(oppDeck.Count - 1);
+                }
+            }
+
+            return causedRefresh ? 1 : 0;
+        }
+
+        public (List<Card> removedCards, bool causedRefresh) _millTop(int count)
         {
             List<Card> removedCards = new List<Card>();
             bool causedRefresh = false;
@@ -243,6 +282,45 @@ namespace MyWebApp
             }
 
             return (removedCards, causedRefresh);
+        }
+
+        public int Mill_Top(int count)
+        {
+            List<Card> removedCards = new List<Card>();
+            bool causedRefresh = false;
+
+            // Check if the requested count exceeds the number of cards in the opponent's deck
+            if (count > oppDeck.Count)
+            {
+                // If so, trigger a deck refresh
+                causedRefresh = true;
+                int cardsToMill = oppDeck.Count;
+
+                // Remove all the cards from the deck
+                for (int i = 0; i < cardsToMill; i++)
+                {
+                    removedCards.Add(oppDeck[0]);
+                    oppDeck.RemoveAt(0);
+                }
+
+                // Refresh the opponent's deck after it gets emptied
+                Refresh();
+
+                // Add the remaining cards requested from the top of the new refreshed deck
+                count -= cardsToMill;
+            }
+
+            // Continue removing the remaining cards if necessary
+            for (int i = 0; i < count; i++)
+            {
+                if (oppDeck.Count > 0)
+                {
+                    removedCards.Add(oppDeck[0]);
+                    oppDeck.RemoveAt(0);
+                }
+            }
+
+            return causedRefresh ? 1 : 0;
         }
 
         public int IcyTail(int value)
@@ -250,7 +328,7 @@ namespace MyWebApp
             int burnDamge = 0;
             int refreshdamage = 0;
 
-            (List<Card> removedCards, bool refresh) = Mill_Bottom(value);
+            (List<Card> removedCards, bool refresh) = _millBottom(value);
             if (refresh) refreshdamage += 1;
 
             int burnCount = 0;
@@ -268,7 +346,7 @@ namespace MyWebApp
             int burnDamge = 0;
             int refreshdamage = 0;
 
-            (List<Card> removedCards, bool refresh) = Mill_Bottom(value);
+            (List<Card> removedCards, bool refresh) = _millBottom(value);
             if (refresh) refreshdamage += 1;
 
             int burnCount = 0;
@@ -287,7 +365,7 @@ namespace MyWebApp
             int burnDamge = 0;
             int refreshdamage = 0;
 
-            (List<Card> removedCards, bool refresh) = Mill_Bottom(cards);
+            (List<Card> removedCards, bool refresh) = _millBottom(cards);
             if (refresh) refreshdamage += 1;
 
             foreach (Card removedCard in removedCards)
@@ -303,7 +381,7 @@ namespace MyWebApp
             int burnDamge = 0;
             int refreshdamage = 0;
 
-            (List<Card> removedCards, bool refresh) = Mill_Bottom(cards);
+            (List<Card> removedCards, bool refresh) = _millBottom(cards);
             if (refresh) refreshdamage += 1;
 
             foreach (Card removedCard in removedCards)
