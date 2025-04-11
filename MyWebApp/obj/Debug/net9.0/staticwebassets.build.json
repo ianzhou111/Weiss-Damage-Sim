@@ -1,12 +1,1382 @@
 {
   "Version": 1,
-  "Hash": "IIywcumt4cD2W6F7TQ0VBb9mRpvnkSjSlUbgKmSLXEQ=",
+  "Hash": "20VZRauiEighSog5UC9zAmjBvrr5m3J+0mMj4O+hqGM=",
   "Source": "MyWebApp",
   "BasePath": "_content/MyWebApp",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "MyWebApp\\wwwroot",
+      "Source": "MyWebApp",
+      "ContentRoot": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\",
+      "BasePath": "_content/MyWebApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\d1huvwb1os-n3h8b5a63q.gz",
+      "SourceId": "MyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/MyWebApp",
+      "RelativePath": "assets/index-CJNnhbFq#[.{fingerprint=n3h8b5a63q}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\assets\\index-CJNnhbFq.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "ih0uqg82qb",
+      "Integrity": "CghrQe2rY8nbB45H2RB0j/3bfFE8NCbq4efC9/foNig=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\assets\\index-CJNnhbFq.css"
+    },
+    {
+      "Identity": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\pycmij9p7f-69kjnsiwqx.gz",
+      "SourceId": "MyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/MyWebApp",
+      "RelativePath": "vite#[.{fingerprint=69kjnsiwqx}]?.svg.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\vite.svg",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "zg8rzofdes",
+      "Integrity": "XQkDcax/ToCYcNsBDmzd6VCkok+CNLm2INPe95PRPSM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\vite.svg"
+    },
+    {
+      "Identity": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\qxy0uteqh1-0gklclbfdo.gz",
+      "SourceId": "MyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/MyWebApp",
+      "RelativePath": "assets/index-StkDsRT_#[.{fingerprint=0gklclbfdo}]?.js.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\assets\\index-StkDsRT_.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "g85ssi6dm8",
+      "Integrity": "gDI1IfQKbReFsTq7G1S3nQu/qGwDtgAeZjW98+Y8jaw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\assets\\index-StkDsRT_.js"
+    },
+    {
+      "Identity": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\qzjphe11ql-gzv05sbukl.gz",
+      "SourceId": "MyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/MyWebApp",
+      "RelativePath": "index#[.{fingerprint=gzv05sbukl}]?.html.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\index.html",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "v9zwd2b3ao",
+      "Integrity": "baDL0SRYGXbwVD57SXrd65iIx32a99RQchzmuYh31+w=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\assets\\index-CJNnhbFq.css",
+      "SourceId": "MyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\",
+      "BasePath": "_content/MyWebApp",
+      "RelativePath": "assets/index-CJNnhbFq#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "n3h8b5a63q",
+      "Integrity": "k0cckf5Jaw9KKJEg98hAXLr+JChcWl9CMafOkXwe6Ww=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\index-CJNnhbFq.css"
+    },
+    {
+      "Identity": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\assets\\index-StkDsRT_.js",
+      "SourceId": "MyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\",
+      "BasePath": "_content/MyWebApp",
+      "RelativePath": "assets/index-StkDsRT_#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "0gklclbfdo",
+      "Integrity": "QDV1Dy5oooKoNlLNKYm6psqEwXw5p1kfXzV0MeibTAM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\index-StkDsRT_.js"
+    },
+    {
+      "Identity": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\index.html",
+      "SourceId": "MyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\",
+      "BasePath": "_content/MyWebApp",
+      "RelativePath": "index#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "gzv05sbukl",
+      "Integrity": "7OaztIlrcR9X5LJkwu3PGulu8aNf7EncRQYthy8TMtw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\vite.svg",
+      "SourceId": "MyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\",
+      "BasePath": "_content/MyWebApp",
+      "RelativePath": "vite#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "69kjnsiwqx",
+      "Integrity": "SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vite.svg"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "assets/index-CJNnhbFq.css",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\d1huvwb1os-n3h8b5a63q.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000625390869"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1598"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CghrQe2rY8nbB45H2RB0j/3bfFE8NCbq4efC9/foNig=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"k0cckf5Jaw9KKJEg98hAXLr+JChcWl9CMafOkXwe6Ww=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-k0cckf5Jaw9KKJEg98hAXLr+JChcWl9CMafOkXwe6Ww="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-CJNnhbFq.css",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\assets\\index-CJNnhbFq.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4857"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"k0cckf5Jaw9KKJEg98hAXLr+JChcWl9CMafOkXwe6Ww=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-k0cckf5Jaw9KKJEg98hAXLr+JChcWl9CMafOkXwe6Ww="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-CJNnhbFq.css.gz",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\d1huvwb1os-n3h8b5a63q.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1598"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CghrQe2rY8nbB45H2RB0j/3bfFE8NCbq4efC9/foNig=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-CghrQe2rY8nbB45H2RB0j/3bfFE8NCbq4efC9/foNig="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-CJNnhbFq.n3h8b5a63q.css",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\d1huvwb1os-n3h8b5a63q.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000625390869"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1598"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CghrQe2rY8nbB45H2RB0j/3bfFE8NCbq4efC9/foNig=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"k0cckf5Jaw9KKJEg98hAXLr+JChcWl9CMafOkXwe6Ww=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n3h8b5a63q"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-CJNnhbFq.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-k0cckf5Jaw9KKJEg98hAXLr+JChcWl9CMafOkXwe6Ww="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-CJNnhbFq.n3h8b5a63q.css",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\assets\\index-CJNnhbFq.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4857"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"k0cckf5Jaw9KKJEg98hAXLr+JChcWl9CMafOkXwe6Ww=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n3h8b5a63q"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-CJNnhbFq.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-k0cckf5Jaw9KKJEg98hAXLr+JChcWl9CMafOkXwe6Ww="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-CJNnhbFq.n3h8b5a63q.css.gz",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\d1huvwb1os-n3h8b5a63q.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1598"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CghrQe2rY8nbB45H2RB0j/3bfFE8NCbq4efC9/foNig=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n3h8b5a63q"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-CJNnhbFq.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CghrQe2rY8nbB45H2RB0j/3bfFE8NCbq4efC9/foNig="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-StkDsRT_.0gklclbfdo.js",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\qxy0uteqh1-0gklclbfdo.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000009836517"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "101661"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gDI1IfQKbReFsTq7G1S3nQu/qGwDtgAeZjW98+Y8jaw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"QDV1Dy5oooKoNlLNKYm6psqEwXw5p1kfXzV0MeibTAM=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0gklclbfdo"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-StkDsRT_.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-QDV1Dy5oooKoNlLNKYm6psqEwXw5p1kfXzV0MeibTAM="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-StkDsRT_.0gklclbfdo.js",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\assets\\index-StkDsRT_.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "313073"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QDV1Dy5oooKoNlLNKYm6psqEwXw5p1kfXzV0MeibTAM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0gklclbfdo"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-StkDsRT_.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-QDV1Dy5oooKoNlLNKYm6psqEwXw5p1kfXzV0MeibTAM="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-StkDsRT_.0gklclbfdo.js.gz",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\qxy0uteqh1-0gklclbfdo.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "101661"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gDI1IfQKbReFsTq7G1S3nQu/qGwDtgAeZjW98+Y8jaw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0gklclbfdo"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-StkDsRT_.js.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gDI1IfQKbReFsTq7G1S3nQu/qGwDtgAeZjW98+Y8jaw="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-StkDsRT_.js",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\qxy0uteqh1-0gklclbfdo.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000009836517"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "101661"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gDI1IfQKbReFsTq7G1S3nQu/qGwDtgAeZjW98+Y8jaw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"QDV1Dy5oooKoNlLNKYm6psqEwXw5p1kfXzV0MeibTAM=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-QDV1Dy5oooKoNlLNKYm6psqEwXw5p1kfXzV0MeibTAM="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-StkDsRT_.js",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\assets\\index-StkDsRT_.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "313073"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QDV1Dy5oooKoNlLNKYm6psqEwXw5p1kfXzV0MeibTAM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-QDV1Dy5oooKoNlLNKYm6psqEwXw5p1kfXzV0MeibTAM="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-StkDsRT_.js.gz",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\qxy0uteqh1-0gklclbfdo.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "101661"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gDI1IfQKbReFsTq7G1S3nQu/qGwDtgAeZjW98+Y8jaw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-gDI1IfQKbReFsTq7G1S3nQu/qGwDtgAeZjW98+Y8jaw="
+        }
+      ]
+    },
+    {
+      "Route": "index.gzv05sbukl.html",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\qzjphe11ql-gzv05sbukl.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.003623188406"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "275"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"baDL0SRYGXbwVD57SXrd65iIx32a99RQchzmuYh31+w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"7OaztIlrcR9X5LJkwu3PGulu8aNf7EncRQYthy8TMtw=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gzv05sbukl"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7OaztIlrcR9X5LJkwu3PGulu8aNf7EncRQYthy8TMtw="
+        }
+      ]
+    },
+    {
+      "Route": "index.gzv05sbukl.html",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "388"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7OaztIlrcR9X5LJkwu3PGulu8aNf7EncRQYthy8TMtw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gzv05sbukl"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7OaztIlrcR9X5LJkwu3PGulu8aNf7EncRQYthy8TMtw="
+        }
+      ]
+    },
+    {
+      "Route": "index.gzv05sbukl.html.gz",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\qzjphe11ql-gzv05sbukl.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "275"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"baDL0SRYGXbwVD57SXrd65iIx32a99RQchzmuYh31+w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gzv05sbukl"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-baDL0SRYGXbwVD57SXrd65iIx32a99RQchzmuYh31+w="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\qzjphe11ql-gzv05sbukl.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.003623188406"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "275"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"baDL0SRYGXbwVD57SXrd65iIx32a99RQchzmuYh31+w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"7OaztIlrcR9X5LJkwu3PGulu8aNf7EncRQYthy8TMtw=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7OaztIlrcR9X5LJkwu3PGulu8aNf7EncRQYthy8TMtw="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "388"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7OaztIlrcR9X5LJkwu3PGulu8aNf7EncRQYthy8TMtw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7OaztIlrcR9X5LJkwu3PGulu8aNf7EncRQYthy8TMtw="
+        }
+      ]
+    },
+    {
+      "Route": "index.html.gz",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\qzjphe11ql-gzv05sbukl.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "275"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"baDL0SRYGXbwVD57SXrd65iIx32a99RQchzmuYh31+w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 22:09:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-baDL0SRYGXbwVD57SXrd65iIx32a99RQchzmuYh31+w="
+        }
+      ]
+    },
+    {
+      "Route": "vite.69kjnsiwqx.svg",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\pycmij9p7f-69kjnsiwqx.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001288659794"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "775"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XQkDcax/ToCYcNsBDmzd6VCkok+CNLm2INPe95PRPSM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Feb 2025 22:17:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "69kjnsiwqx"
+        },
+        {
+          "Name": "label",
+          "Value": "vite.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs="
+        }
+      ]
+    },
+    {
+      "Route": "vite.69kjnsiwqx.svg",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\vite.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1497"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Feb 2025 22:17:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "69kjnsiwqx"
+        },
+        {
+          "Name": "label",
+          "Value": "vite.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs="
+        }
+      ]
+    },
+    {
+      "Route": "vite.69kjnsiwqx.svg.gz",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\pycmij9p7f-69kjnsiwqx.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XQkDcax/ToCYcNsBDmzd6VCkok+CNLm2INPe95PRPSM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Feb 2025 22:17:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "69kjnsiwqx"
+        },
+        {
+          "Name": "label",
+          "Value": "vite.svg.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XQkDcax/ToCYcNsBDmzd6VCkok+CNLm2INPe95PRPSM="
+        }
+      ]
+    },
+    {
+      "Route": "vite.svg",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\pycmij9p7f-69kjnsiwqx.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001288659794"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "775"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XQkDcax/ToCYcNsBDmzd6VCkok+CNLm2INPe95PRPSM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Feb 2025 22:17:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs="
+        }
+      ]
+    },
+    {
+      "Route": "vite.svg",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\wwwroot\\vite.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1497"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Feb 2025 22:17:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs="
+        }
+      ]
+    },
+    {
+      "Route": "vite.svg.gz",
+      "AssetFile": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\obj\\Debug\\net9.0\\compressed\\pycmij9p7f-69kjnsiwqx.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XQkDcax/ToCYcNsBDmzd6VCkok+CNLm2INPe95PRPSM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Feb 2025 22:17:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XQkDcax/ToCYcNsBDmzd6VCkok+CNLm2INPe95PRPSM="
+        }
+      ]
+    }
+  ]
 }

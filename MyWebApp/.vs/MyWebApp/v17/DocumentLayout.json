@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\damages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|solutionrelative:damages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\services\\attackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|solutionrelative:services\\attackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\controllers\\attackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|solutionrelative:controllers\\attackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\services\\attackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|solutionrelative:services\\attackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\damages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|solutionrelative:damages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\models\\attackrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\models\\deckinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|solutionrelative:models\\deckinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|c:\\users\\ian\\weiss-damage-sim\\mywebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73764056-341E-4404-B6BB-DD2A527082CD}|MyWebApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,17 +42,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "AttackService.cs",
               "DocumentMoniker": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Services\\AttackService.cs",
               "RelativeDocumentMoniker": "Services\\AttackService.cs",
               "ToolTip": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Services\\AttackService.cs",
               "RelativeToolTip": "Services\\AttackService.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAowNIAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAKkAAAAAAAAAAAAuwB0AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-05T19:39:55.175Z",
               "IsPinned": true,
@@ -60,32 +60,34 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T22:49:38.9Z"
+              "WhenOpened": "2025-02-05T22:49:38.9Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AttackController.cs",
               "DocumentMoniker": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Controllers\\AttackController.cs",
               "RelativeDocumentMoniker": "Controllers\\AttackController.cs",
               "ToolTip": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Controllers\\AttackController.cs",
               "RelativeToolTip": "Controllers\\AttackController.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAkwGcAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAkwGoAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-05T22:28:57.483Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Damages.cs",
               "DocumentMoniker": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Damages.cs",
               "RelativeDocumentMoniker": "Damages.cs",
@@ -98,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "DeckInitializer.cs",
               "DocumentMoniker": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\DeckInitializer.cs",
               "RelativeDocumentMoniker": "DeckInitializer.cs",
@@ -111,7 +113,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Card.cs",
               "DocumentMoniker": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Models\\Card.cs",
               "RelativeDocumentMoniker": "Models\\Card.cs",
@@ -119,11 +121,12 @@
               "RelativeToolTip": "Models\\Card.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T20:02:40.714Z"
+              "WhenOpened": "2025-02-05T20:02:40.714Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "DeckInfo.cs",
               "DocumentMoniker": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Models\\DeckInfo.cs",
               "RelativeDocumentMoniker": "Models\\DeckInfo.cs",
@@ -131,11 +134,12 @@
               "RelativeToolTip": "Models\\DeckInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T19:49:43.472Z"
+              "WhenOpened": "2025-02-05T19:49:43.472Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "AttackRequest.cs",
               "DocumentMoniker": "C:\\Users\\Ian\\Weiss-Damage-Sim\\MyWebApp\\Models\\AttackRequest.cs",
               "RelativeDocumentMoniker": "Models\\AttackRequest.cs",

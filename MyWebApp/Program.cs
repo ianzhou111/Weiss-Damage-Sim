@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyWebApp.Services;
-using System.IO;
 
 namespace MyWebApp
 {
@@ -12,18 +11,19 @@ namespace MyWebApp
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // 👇 Flip this manually: true = local dev, false = production
+            // ✅ Flip this manually depending on where you're running
             bool isLocal = false;
 
             // Register services
             builder.Services.AddControllers();
             builder.Services.AddSingleton<AttackService>();
 
+            // ✅ CORS policies
             builder.Services.AddCors(options =>
             {
                 if (isLocal)
                 {
-                    options.AddPolicy("LocalDev", policy =>
+                    options.AddPolicy("AllowLocalhost", policy =>
                     {
                         policy.WithOrigins("http://localhost:5173")
                               .AllowAnyMethod()
@@ -36,19 +36,20 @@ namespace MyWebApp
                     options.AddPolicy("AllowAll", policy =>
                     {
                         policy.AllowAnyOrigin()
-                              .AllowAnyMethod()
-                              .AllowAnyHeader();
+                              .AllowAnyHeader()
+                              .AllowAnyMethod();
                     });
                 }
             });
 
             var app = builder.Build();
 
+            // ✅ Use CORS policy depending on mode
+            app.UseCors(isLocal ? "AllowLocalhost" : "AllowAll");
+
+            // ✅ HTTPS redirect only in local dev
             if (isLocal)
             {
-                app.UseCors("LocalDev");
-
-                // Optional: local HTTPS redirect override
                 app.Use(async (context, next) =>
                 {
                     if (!context.Request.IsHttps && context.Request.Method != "OPTIONS")
@@ -58,29 +59,17 @@ namespace MyWebApp
                     }
                     await next();
                 });
-            }
-            else
-            {
-                app.UseCors("AllowAll");
+
                 app.UseHttpsRedirection();
             }
 
-            // Serve static React app
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
 
-            // React SPA fallback route
-            app.Run(async (context) =>
-            {
-                context.Response.ContentType = "text/html";
-                await context.Response.SendFileAsync(Path.Combine("wwwroot", "index.html"));
-            });
+            app.MapControllers();
+            app.MapFallbackToFile("index.html");
 
             app.Run();
         }

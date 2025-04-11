@@ -4,8 +4,8 @@ using OxyPlot;
 using OxyPlot.Series;
 using OxyPlot.Axes;
 using OxyPlot.Annotations;
-using OxyPlot.WindowsForms;
 using System.Text.Json;
+using OxyPlot.SkiaSharp;
 
 namespace MyWebApp.Services
 {
@@ -124,7 +124,7 @@ namespace MyWebApp.Services
             });
 
             var stream = new MemoryStream();
-            var pngExporter = new PngExporter { Width = 800, Height = 600, Resolution = 96 };
+            var pngExporter = new PngExporter { Width = 800, Height = 600, Dpi = 96, UseTextShaping = false };
             pngExporter.Export(plotModel, stream);
             return stream.ToArray();
         }

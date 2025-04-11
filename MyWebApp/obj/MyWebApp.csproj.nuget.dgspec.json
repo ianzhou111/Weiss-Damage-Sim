@@ -54,9 +54,21 @@
               "target": "Package",
               "version": "[9.0.1, )"
             },
-            "OxyPlot.WindowsForms": {
+            "OxyPlot.SkiaSharp": {
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "OxyPlot.Wpf": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[3.116.1, )"
+            },
+            "SkiaSharp.NativeAssets.Linux.NoDependencies": {
+              "target": "Package",
+              "version": "[3.116.1, )"
             },
             "System.Drawing.Common": {
               "target": "Package",

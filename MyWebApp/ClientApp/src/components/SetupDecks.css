@@ -1,0 +1,93 @@
+/* Ensures the entire page layout aligns with the sidebar */
+.app-container {
+    display: flex;
+}
+
+/* Main content area */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 250px; /* Ensures content does not overlap with the sidebar */
+    color: white;
+}
+
+/* Style for Setup Decks page */
+.setup-decks-container {
+    max-width: 1000px; /* Increased width to fit 3 decks side by side */
+    margin: auto;
+    background: #3b3b3b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Individual deck container */
+.deck-container {
+    flex: 1;
+    background: #444;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Headings */
+.setup-decks-container h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.deck-container h3 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* Instructions */
+.setup-decks-container p {
+    text-align: center;
+    font-size: 16px;
+    color: #bbb;
+}
+
+/* Form Inputs */
+.setup-decks-input-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.setup-decks-input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: #555;
+    color: white;
+    text-align: center;
+}
+
+/* Button Styles */
+.setup-decks-button {
+    background: #5c5c5c;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.setup-decks-button:hover {
+    background: #707070;
+}

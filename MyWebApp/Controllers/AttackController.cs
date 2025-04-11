@@ -35,26 +35,39 @@ namespace MyWebApp.Controllers
         [HttpPost("calculate-damage")]
         public IActionResult CalculateDamageAndGenerateGraph([FromBody] AttackRequest request)
         {
-            // Validate the request data
+            Console.WriteLine("🔥 [POST] /calculate-damage called");
+            Console.Out.Flush();
+
             if (request == null || request.AttackNameValuePairs == null || request.AttackNameValuePairs.Count == 0)
             {
+                Console.WriteLine("⚠️ Invalid request: AttackNameValuePairs is null or empty");
+                Console.Out.Flush();
                 return BadRequest("Invalid request data. AttackNameValuePairs cannot be null or empty.");
             }
 
             try
             {
-                // Call the service method to calculate damage and generate the graph
+                Console.WriteLine($"🔢 Simulating {request.AttackNameValuePairs.Count} attacks...");
+                Console.Out.Flush();
+
                 byte[] graphImage = _attackService.CalculateDamageAndGenerateGraph(request);
 
-                // Return the generated graph as a PNG image
+                Console.WriteLine("✅ Graph image generated successfully");
+                Console.Out.Flush();
+
                 return File(graphImage, "image/png");
             }
             catch (Exception ex)
             {
-                // Log the error and return a generic error response
+                Console.WriteLine("❌ Exception in /calculate-damage:");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                Console.Out.Flush();
+
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
 
         /// <summary>
         /// Initializes the decks based on the provided deck information.
