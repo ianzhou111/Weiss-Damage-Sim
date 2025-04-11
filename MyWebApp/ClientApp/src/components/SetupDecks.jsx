@@ -32,7 +32,7 @@ const SetupDecks = () => {
         return;
       }
     }
-    alert("✅ All deck totals are valid and saved locally.");
+    alert("✅ Decks Saved! ✅");
   };
 
   return (
