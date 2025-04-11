@@ -12,7 +12,7 @@ namespace MyWebApp
             var builder = WebApplication.CreateBuilder(args);
 
             // ✅ Flip this manually depending on where you're running
-            bool isLocal = true;
+            bool isLocal = builder.Environment.IsDevelopment();
 
             // Register services
             builder.Services.AddControllers();
