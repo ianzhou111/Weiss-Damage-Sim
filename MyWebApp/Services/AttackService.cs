@@ -1,4 +1,4 @@
-using MyWebApp.Models;
+﻿using MyWebApp.Models;
 using System.Reflection;
 using OxyPlot;
 using OxyPlot.Series;
@@ -11,7 +11,7 @@ namespace MyWebApp.Services
 {
     public class AttackService
     {
-        public const int simulations = 3000;
+        private const int simulations = 3000;
         private List<Card> oppDeck;
         private List<Card> selfDeck;
         private List<Card> opp2ndDeck;
@@ -33,6 +33,11 @@ namespace MyWebApp.Services
 
         public void InitializeDecks(DeckInfo oppDeckInfo, DeckInfo selfDeckInfo, DeckInfo opp2ndDeckInfo)
         {
+            // 🛡️ Validate deck sizes before doing anything else
+            ValidateDeckSize(oppDeckInfo, "Opponent");
+            ValidateDeckSize(selfDeckInfo, "Self");
+            ValidateDeckSize(opp2ndDeckInfo, "Opponent 2nd");
+
             // Store the original DeckInfo for resetting in SimulateDamage
             originalOppDeckInfo = oppDeckInfo;
             originalSelfDeckInfo = selfDeckInfo;
@@ -54,6 +59,22 @@ namespace MyWebApp.Services
             damages = new Damages(oppDeck, selfDeck, oppDeckInfo, selfDeckInfo, opp2ndDeckInfo);
             finishers = new Finishers(damages);
         }
+
+        private void ValidateDeckSize(DeckInfo deck, string name)
+        {
+            int total =
+                deck.Lv0InDeck +
+                deck.Lv1InDeck +
+                deck.Lv2InDeck +
+                deck.Lv3InDeck +
+                deck.CXInDeck;
+
+            if (total > 100)
+            {
+                throw new InvalidOperationException($"{name} deck has {total} cards — exceeds the 100-card limit.");
+            }
+        }
+
 
         public byte[] CalculateDamageAndGenerateGraph(AttackRequest request)
         {
@@ -180,20 +201,37 @@ namespace MyWebApp.Services
             object target = damages;
             Type type = typeof(Damages);
 
-            if (finishers != null && typeof(Finishers).GetMethod(methodName) != null)
+            // Check if method exists on Finishers instead
+            MethodInfo? method = typeof(Finishers).GetMethod(methodName);
+            if (method != null && finishers != null)
             {
                 target = finishers;
                 type = typeof(Finishers);
             }
+            else
+            {
+                method = typeof(Damages).GetMethod(methodName);
+            }
 
-            MethodInfo? method = type.GetMethod(methodName);
             if (method == null)
             {
-                Console.WriteLine($"Method '{methodName}' not found.");
+                Console.WriteLine($"❌ Method '{methodName}' not found.");
+                return 0;
+            }
+
+            if (method.ReturnType != typeof(int))
+            {
+                Console.WriteLine($"❌ Method '{methodName}' must return int, but returns {method.ReturnType}.");
                 return 0;
             }
 
             ParameterInfo[] parameters = method.GetParameters();
+            if (args.Length != parameters.Length)
+            {
+                Console.WriteLine($"❌ Argument count mismatch for '{methodName}': expected {parameters.Length}, got {args.Length}.");
+                return 0;
+            }
+
             object[] convertedArgs = new object[parameters.Length];
 
             for (int i = 0; i < parameters.Length; i++)
@@ -205,17 +243,20 @@ namespace MyWebApp.Services
                 {
                     if (rawArg is JsonElement jsonElement)
                     {
-                        // Extract based on expected parameter type
-                        if (targetType == typeof(int))
+                        if (targetType == typeof(int) && jsonElement.ValueKind == JsonValueKind.Number)
                             convertedArgs[i] = jsonElement.GetInt32();
-                        else if (targetType == typeof(float))
+                        else if (targetType == typeof(float) && jsonElement.ValueKind == JsonValueKind.Number)
                             convertedArgs[i] = jsonElement.GetSingle();
-                        else if (targetType == typeof(string))
+                        else if (targetType == typeof(string) && jsonElement.ValueKind == JsonValueKind.String)
                             convertedArgs[i] = jsonElement.GetString();
-                        else if (targetType == typeof(bool))
+                        else if (targetType == typeof(bool) &&
+                                 (jsonElement.ValueKind == JsonValueKind.True || jsonElement.ValueKind == JsonValueKind.False))
                             convertedArgs[i] = jsonElement.GetBoolean();
                         else
-                            convertedArgs[i] = JsonSerializer.Deserialize(jsonElement.GetRawText(), targetType);
+                        {
+                            convertedArgs[i] = JsonSerializer.Deserialize(jsonElement.GetRawText(), targetType)
+                                ?? throw new InvalidOperationException("Deserialized value is null");
+                        }
                     }
                     else
                     {
@@ -224,21 +265,35 @@ namespace MyWebApp.Services
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Argument conversion failed for '{methodName}' parameter {i}: {ex.Message}");
+                    Console.WriteLine($"❌ Failed to convert argument {i} for method '{methodName}': {ex.Message}");
                     return 0;
                 }
             }
 
             try
             {
-                return (int)method.Invoke(target, convertedArgs);
+                object? result = method.Invoke(target, convertedArgs);
+
+                if (result is int intResult)
+                {
+                    return intResult;
+                }
+
+                Console.WriteLine($"❌ Method '{methodName}' returned null or non-int result.");
+                return 0;
+            }
+            catch (TargetInvocationException ex)
+            {
+                Console.WriteLine($"❌ Error inside method '{methodName}': {ex.InnerException?.Message}");
+                return 0;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error invoking '{methodName}': {ex.Message}");
+                Console.WriteLine($"❌ Reflection invoke failed for '{methodName}': {ex.Message}");
                 return 0;
             }
         }
+
 
 
     }
