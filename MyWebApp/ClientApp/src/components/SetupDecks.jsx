@@ -1,22 +1,19 @@
 import { useContext } from "react";
 import { DeckContext } from "./DeckContext";
-import axios from "axios";
 
-// ✅ Load environment-based API base URL
-const baseURL = import.meta.env.VITE_API_BASE || "";
+// Helper to calculate total cards
+const calculateTotalCards = (deck) => {
+  return (
+    Number(deck.Lv0InDeck || 0) +
+    Number(deck.Lv1InDeck || 0) +
+    Number(deck.Lv2InDeck || 0) +
+    Number(deck.Lv3InDeck || 0) +
+    Number(deck.CXInDeck || 0)
+  );
+};
 
 const SetupDecks = () => {
   const { decks, setDecks, resetToDefaults } = useContext(DeckContext);
-
-  const calculateTotalCards = (deck) => {
-    return (
-      Number(deck.Lv0InDeck || 0) +
-      Number(deck.Lv1InDeck || 0) +
-      Number(deck.Lv2InDeck || 0) +
-      Number(deck.Lv3InDeck || 0) +
-      Number(deck.CXInDeck || 0)
-    );
-  };
 
   const handleChange = (deck, e) => {
     setDecks((prevDecks) => ({
@@ -28,27 +25,14 @@ const SetupDecks = () => {
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleValidate = () => {
     for (const deck in decks) {
       if (calculateTotalCards(decks[deck]) > 50) {
         alert(`${deck.replace(/([A-Z])/g, " $1").trim()} exceeds 50 cards!`);
         return;
       }
     }
-
-    try {
-      const response = await axios.post(
-        `${baseURL}/api/attack/initialize-decks`,
-        {
-          SelfDeckInfo: { ...decks.SelfDeckInfo, TotalCardsInDeck: calculateTotalCards(decks.SelfDeckInfo) },
-          OppDeckInfo: { ...decks.OppDeckInfo, TotalCardsInDeck: calculateTotalCards(decks.OppDeckInfo) },
-          Opp2ndDeckInfo: { ...decks.Opp2ndDeckInfo, TotalCardsInDeck: calculateTotalCards(decks.Opp2ndDeckInfo) },
-        }
-      );
-      alert(response.data);
-    } catch (error) {
-      alert("Error: " + (error.response?.data || error.message));
-    }
+    alert("✅ All deck totals are valid and saved locally.");
   };
 
   return (
@@ -87,14 +71,14 @@ const SetupDecks = () => {
 
         <button
           className="mt-6 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded"
-          onClick={handleSubmit}
+          onClick={handleValidate}
         >
-          Submit Deck Info
+          Validate Deck Info
         </button>
 
         <button
           className="mt-3 w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2 rounded"
-          onClick={() => resetToDefaults()}
+          onClick={resetToDefaults}
         >
           Reset to Default
         </button>

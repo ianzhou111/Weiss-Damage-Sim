@@ -3,6 +3,7 @@ import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import axios from "axios";
 import { AttackContext } from "./AttackContext.jsx";
+import { DeckContext } from "./DeckContext.jsx";
 import "./AttackCalculator.css";
 
 const baseURL = import.meta.env.VITE_API_BASE || "";
@@ -91,6 +92,8 @@ const AttackCalculator = () => {
     imageUrl, setImageUrl
   } = useContext(AttackContext);
 
+  const { decks } = useContext(DeckContext);
+
   const [basicMethods, setBasicMethods] = useState([]);
   const [finisherMethods, setFinisherMethods] = useState([]);
   const [showFinishers, setShowFinishers] = useState(false);
@@ -162,26 +165,51 @@ const AttackCalculator = () => {
   };
 
   const submitAttackRequest = async () => {
-    if (attackPairs.length === 0) return;
-    try {
-      const response = await axios.post(
-        `${baseURL}/api/attack/calculate-damage`,
-        { AttackNameValuePairs: attackPairs },
-        { responseType: "blob" }
-      );
-      setImageUrl(URL.createObjectURL(response.data));
-    } catch (error) {
-      if (error.response?.status === 500 && error.response.data instanceof Blob) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          alert("Server error:\n" + reader.result);
-        };
-        reader.readAsText(error.response.data);
-      } else {
-        alert("Unexpected error: " + error.message);
-      }
-    }
+  if (attackPairs.length === 0) return;
+
+  const calculateTotalCards = (deck) =>
+    Number(deck.Lv0InDeck) +
+    Number(deck.Lv1InDeck) +
+    Number(deck.Lv2InDeck) +
+    Number(deck.Lv3InDeck) +
+    Number(deck.CXInDeck);
+
+  const fullRequest = {
+    attackNameValuePairs: attackPairs,
+    selfDeckInfo: {
+      ...decks.SelfDeckInfo,
+      totalCardsInDeck: calculateTotalCards(decks.SelfDeckInfo),
+    },
+    oppDeckInfo: {
+      ...decks.OppDeckInfo,
+      totalCardsInDeck: calculateTotalCards(decks.OppDeckInfo),
+    },
+    opp2ndDeckInfo: {
+      ...decks.Opp2ndDeckInfo,
+      totalCardsInDeck: calculateTotalCards(decks.Opp2ndDeckInfo),
+    },
   };
+
+  try {
+    const response = await axios.post(
+      `${baseURL}/api/attack/calculate-damage`,
+      fullRequest,
+      { responseType: "blob" }
+    );
+    setImageUrl(URL.createObjectURL(response.data));
+  } catch (error) {
+    if (error.response?.status === 500 && error.response.data instanceof Blob) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        alert("Server error:\n" + reader.result);
+      };
+      reader.readAsText(error.response.data);
+    } else {
+      alert("Unexpected error: " + error.message);
+    }
+  }
+};
+
 
   const methodsToShow = showFinishers ? finisherMethods : basicMethods;
   const currentParams = methodsToShow.find(m => m.method === attackName)?.parameters || [];

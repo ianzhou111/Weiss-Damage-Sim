@@ -104,3 +104,9 @@ C:\Users\Ian\Weiss-Damage-Sim\MyWebApp\bin\Debug\net9.0\out\MyWebApp.deps.json
 C:\Users\Ian\Weiss-Damage-Sim\MyWebApp\bin\Debug\net9.0\out\MyWebApp.runtimeconfig.json
 C:\Users\Ian\Weiss-Damage-Sim\MyWebApp\bin\Debug\net9.0\out\MyWebApp.staticwebassets.endpoints.json
 C:\Users\Ian\Weiss-Damage-Sim\MyWebApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\Ian\Weiss-Damage-Sim\MyWebApp\bin\Debug\net9.0\OxyPlot.Wpf.dll
+C:\Users\Ian\Weiss-Damage-Sim\MyWebApp\bin\Debug\net9.0\OxyPlot.Wpf.Shared.dll
+C:\Users\Ian\Weiss-Damage-Sim\MyWebApp\bin\Debug\net9.0\runtimes\linux-arm\native\libSkiaSharp.so
+C:\Users\Ian\Weiss-Damage-Sim\MyWebApp\bin\Debug\net9.0\runtimes\linux-arm64\native\libSkiaSharp.so
+C:\Users\Ian\Weiss-Damage-Sim\MyWebApp\bin\Debug\net9.0\runtimes\linux-musl-x64\native\libSkiaSharp.so
+C:\Users\Ian\Weiss-Damage-Sim\MyWebApp\bin\Debug\net9.0\runtimes\linux-x64\native\libSkiaSharp.so

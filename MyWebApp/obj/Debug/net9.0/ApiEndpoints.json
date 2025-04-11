@@ -39,7 +39,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "MyWebApp.Models.AttackRequest",
+        "Type": "MyWebApp.Models.FullDamageRequest",
         "IsRequired": true
       }
     ],
@@ -64,21 +64,5 @@
         "StatusCode": 200
       }
     ]
-  },
-  {
-    "ContainingType": "MyWebApp.Controllers.AttackController",
-    "Method": "InitializeDecks",
-    "RelativePath": "api/Attack/initialize-decks",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "deckRequest",
-        "Type": "MyWebApp.Controllers.InitializeDeckRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
   }
 ]

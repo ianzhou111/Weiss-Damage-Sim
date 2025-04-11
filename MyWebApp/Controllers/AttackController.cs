@@ -33,27 +33,25 @@ namespace MyWebApp.Controllers
         /// <param name="request">The attack request containing the attack name and value pairs.</param>
         /// <returns>The generated graph image as a PNG file.</returns>
         [HttpPost("calculate-damage")]
-        public IActionResult CalculateDamageAndGenerateGraph([FromBody] AttackRequest request)
+        public IActionResult CalculateDamageAndGenerateGraph([FromBody] FullDamageRequest request)
         {
-            Console.WriteLine("🔥 [POST] /calculate-damage called");
-            Console.Out.Flush();
-
-            if (request == null || request.AttackNameValuePairs == null || request.AttackNameValuePairs.Count == 0)
+            if (request == null ||
+                request.AttackNameValuePairs == null || request.AttackNameValuePairs.Count == 0 ||
+                request.SelfDeckInfo == null || request.OppDeckInfo == null || request.Opp2ndDeckInfo == null)
             {
-                Console.WriteLine("⚠️ Invalid request: AttackNameValuePairs is null or empty");
-                Console.Out.Flush();
-                return BadRequest("Invalid request data. AttackNameValuePairs cannot be null or empty.");
+                return BadRequest("Invalid request data. All deck information and AttackNameValuePairs must be provided.");
             }
 
             try
             {
-                Console.WriteLine($"🔢 Simulating {request.AttackNameValuePairs.Count} attacks...");
-                Console.Out.Flush();
+                // Initialize the decks based on the input
+                _attackService.InitializeDecks(request.OppDeckInfo, request.SelfDeckInfo, request.Opp2ndDeckInfo);
 
-                byte[] graphImage = _attackService.CalculateDamageAndGenerateGraph(request);
+                // Create an AttackRequest wrapper from the DTO's attack data
+                var attackRequest = new AttackRequest { AttackNameValuePairs = request.AttackNameValuePairs };
 
-                Console.WriteLine("✅ Graph image generated successfully");
-                Console.Out.Flush();
+                // Generate the damage graph image
+                byte[] graphImage = _attackService.CalculateDamageAndGenerateGraph(attackRequest);
 
                 return File(graphImage, "image/png");
             }
@@ -69,35 +67,36 @@ namespace MyWebApp.Controllers
         }
 
 
-        /// <summary>
+
+        /// <summary> Deprecated. 
         /// Initializes the decks based on the provided deck information.
         /// </summary>
         /// <param name="deckRequest">The request containing deck initialization data.</param>
         /// <returns>Ok if decks are successfully initialized, BadRequest if there are issues.</returns>
-        [HttpPost("initialize-decks")]
-        public IActionResult InitializeDecks([FromBody] InitializeDeckRequest deckRequest)
-        {
-            //Console.WriteLine("Controller Called");
-            // Validate the deck initialization request
-            if (deckRequest == null || deckRequest.OppDeckInfo == null || deckRequest.SelfDeckInfo == null || deckRequest.Opp2ndDeckInfo == null)
-            {
-                return BadRequest("Invalid deck data. All deck information must be provided.");
-            }
+        //[HttpPost("initialize-decks")]
+        //public IActionResult InitializeDecks([FromBody] InitializeDeckRequest deckRequest)
+        //{
+        //    //Console.WriteLine("Controller Called");
+        //    // Validate the deck initialization request
+        //    if (deckRequest == null || deckRequest.OppDeckInfo == null || deckRequest.SelfDeckInfo == null || deckRequest.Opp2ndDeckInfo == null)
+        //    {
+        //        return BadRequest("Invalid deck data. All deck information must be provided.");
+        //    }
 
-            try
-            {
-                // Initialize decks based on the provided deck information
-                _attackService.InitializeDecks(deckRequest.OppDeckInfo, deckRequest.SelfDeckInfo, deckRequest.Opp2ndDeckInfo);
+        //    try
+        //    {
+        //        // Initialize decks based on the provided deck information
+        //        _attackService.InitializeDecks(deckRequest.OppDeckInfo, deckRequest.SelfDeckInfo, deckRequest.Opp2ndDeckInfo);
 
-                // Return a success response
-                return Ok("Decks initialized successfully.");
-            }
-            catch (Exception ex)
-            {
-                // Log the error and return a generic error response
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
-        }
+        //        // Return a success response
+        //        return Ok("Decks initialized successfully.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the error and return a generic error response
+        //        return StatusCode(500, $"Internal server error: {ex.Message}");
+        //    }
+        //}
 
         [HttpGet("basic-methods")]
         public ActionResult<object[]> GetBasicMethods()
