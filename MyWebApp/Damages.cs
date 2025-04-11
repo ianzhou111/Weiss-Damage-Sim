@@ -325,12 +325,12 @@ namespace MyWebApp
             return causedRefresh ? 1 : 0;
         }
 
-        public int IcyTail(int value)
+        public int IcyTail(int amount)
         {
             int burnDamge = 0;
             int refreshdamage = 0;
 
-            (List<Card> removedCards, bool refresh) = _millBottom(value);
+            (List<Card> removedCards, bool refresh) = _millBottom(amount);
             if (refresh) refreshdamage += 1;
 
             int burnCount = 0;
@@ -343,12 +343,12 @@ namespace MyWebApp
             return burnDamge + refreshdamage;
         }
 
-        public int IcyTail_lv0(int value)
+        public int IcyTail_lv0(int amount)
         {
             int burnDamge = 0;
             int refreshdamage = 0;
 
-            (List<Card> removedCards, bool refresh) = _millBottom(value);
+            (List<Card> removedCards, bool refresh) = _millBottom(amount);
             if (refresh) refreshdamage += 1;
 
             int burnCount = 0;
