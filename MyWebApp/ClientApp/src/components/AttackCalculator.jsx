@@ -139,6 +139,7 @@ const AttackCalculator = () => {
   const [finisherMethods, setFinisherMethods] = useState([]);
   const [showFinishers, setShowFinishers] = useState(false);
   const [argValues, setArgValues] = useState([]);
+  const [isCooldown, setIsCooldown] = useState(false);
 
   const listRef = useRef(null);
 
@@ -335,7 +336,18 @@ const AttackCalculator = () => {
               </ul>
             </div>
 
-            <button onClick={submitAttackRequest}>Calculate Damage</button>
+            <button
+              onClick={() => {
+                if (isCooldown) return;
+                setIsCooldown(true);
+                setTimeout(() => setIsCooldown(false), 300);
+                submitAttackRequest();
+              }}
+              disabled={isCooldown}
+              style={{ opacity: isCooldown ? 0.5 : 1 }}
+            >
+              Calculate Damage
+            </button>
           </div>
 
           {imageUrl && (

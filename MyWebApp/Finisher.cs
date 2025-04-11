@@ -25,7 +25,7 @@ namespace MyWebApp
             return burn + swing;
         }
 
-        public int Kana_Burn(int soul)
+        public int Kana_plus_Event_Burn(int soul)
         {
             bool canceledOnce = false;
             int burn = damages.Burn(3);
@@ -47,7 +47,7 @@ namespace MyWebApp
             return burn + swing;
         }
 
-        public int Kana_Moca(int soul)
+        public int Kana_plus_Moca(int soul)
         {
             var oppDeck = damages._oppDeck;
             if (oppDeck[0].Type == Card.CardType.CX)
@@ -120,7 +120,7 @@ namespace MyWebApp
             return swing + burn + refresh;
         }
 
-        public int Nadeshiko_NoStand(int soul)
+        public int Nadeshiko_No_Restand(int soul)
         {
             int burn = 0, refresh = 0;
             int newSoul;

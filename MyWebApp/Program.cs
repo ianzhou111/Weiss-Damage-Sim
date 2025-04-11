@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyWebApp.Services;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
 
 namespace MyWebApp
 {
@@ -42,6 +44,28 @@ namespace MyWebApp
                 }
             });
 
+            builder.Services.AddRateLimiter(options =>
+            {
+                options.RejectionStatusCode = 429;
+
+                options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+                {
+                    var ip = httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+                    var path = httpContext.Request.Path.Value ?? "unknown";
+
+                    // 👇 Composite key: "IP|Path"
+                    var key = $"{ip}|{path}";
+
+                    return RateLimitPartition.GetFixedWindowLimiter(key, _ => new FixedWindowRateLimiterOptions
+                    {
+                        PermitLimit = 3,
+                        Window = TimeSpan.FromSeconds(1),
+                        QueueLimit = 0,
+                        QueueProcessingOrder = QueueProcessingOrder.OldestFirst
+                    });
+                });
+            });
+
             var app = builder.Build();
 
             // ✅ Use CORS policy depending on mode
@@ -68,6 +92,7 @@ namespace MyWebApp
 
             app.UseRouting();
 
+            app.UseRateLimiter();
             app.MapControllers();
             app.MapFallbackToFile("index.html");
 

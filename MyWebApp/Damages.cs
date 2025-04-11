@@ -65,6 +65,8 @@ namespace MyWebApp
             soul += ownDeck[0].SoulTrigger; 
             ownDeck.RemoveAt(0);
 
+            if (ownDeck.Count < 1) DeckInitializer.InitializeSelfDeck(ownDeck, selfDeckInfo);
+
             for (int i = 0; i < soul; i++)
             {
                 if (oppDeck.Count == 0)
