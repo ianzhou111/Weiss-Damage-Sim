@@ -281,5 +281,47 @@ button {
     border-radius: 8px;
     background: #3a3a3a;
   }
+
+  .up-button,
+  .down-button {
+    width: 36px;             /* wider for easier clicking */
+    height: 36px;
+    min-width: 36px;         /* ensures consistent sizing */
+    border-radius: 6px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  /* Up (red theme) */
+  .up-button {
+    background-color: #5a3b3b;
+    color: #fca5a5;
+  }
+  
+  .up-button:hover {
+    background-color: #7f1d1d;
+    color: #fff;
+  }
+  
+  /* Down (blue theme) */
+  .down-button {
+    background-color: #3b4b5a;
+    color: #93c5fd;
+  }
+  
+  .down-button:hover {
+    background-color: #1e3a8a;
+    color: #fff;
+  }
+  
+
   
 

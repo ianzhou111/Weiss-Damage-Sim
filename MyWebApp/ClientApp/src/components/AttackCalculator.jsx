@@ -9,9 +9,31 @@ import "./AttackCalculator.css";
 const baseURL = import.meta.env.VITE_API_BASE || "";
 const ItemType = "ATTACK";
 
+const colorPalette = [
+  "#4b5563", // muted slate
+  "#5b4b8a", // dark violet
+  "#3a5f5c", // desaturated teal
+  "#3a4f6c", // navy steel
+  "#5c473a", // warm taupe
+  "#6b3b3b", // muted wine
+  "#5a4d6d", // dusty purple
+  "#4d3e50", // charcoal lavender
+  "#3f5d5b", // deep pine
+  "#5c6145"  // mossy olive
+];
+
+const getColorFromName = (name) => {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return colorPalette[Math.abs(hash) % colorPalette.length];
+};
+
 const AttackItem = ({ pair, index, moveAttack, removeAttack, updateAttack }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedArgs, setEditedArgs] = useState(pair.Args || []);
+  const bgColor = getColorFromName(pair.AttackName);
 
   const [{ isDragging }, ref] = useDrag({
     type: ItemType,
@@ -47,7 +69,11 @@ const AttackItem = ({ pair, index, moveAttack, removeAttack, updateAttack }) => 
   };
 
   return (
-    <li ref={(node) => ref(drop(node))} className={`attack-item ${isDragging ? "dragging" : ""}`}>
+    <li
+      ref={(node) => ref(drop(node))}
+      className={`attack-item ${isDragging ? "dragging" : ""}`}
+      style={{ backgroundColor: bgColor }}
+    >
       <div className="attack-box">
         <span className="attack-text">
           <strong>{pair.AttackName}:</strong>{" "}
@@ -66,7 +92,23 @@ const AttackItem = ({ pair, index, moveAttack, removeAttack, updateAttack }) => 
             pair.Args?.join(", ")
           )}
         </span>
-        <div style={{ display: "flex", gap: "5px" }}>
+        <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+          <button
+            onClick={() => moveAttack(index, index - 1)}
+            disabled={index === 0}
+            className="up-button"
+          >
+            ⬆
+          </button>
+
+          <button
+            onClick={() => moveAttack(index, index + 1)}
+            disabled={index === pair.total - 1}
+            className="down-button"
+          >
+            ⬇
+          </button>
+
           {isEditing ? (
             <>
               <button onClick={handleSave}>✔</button>
@@ -83,7 +125,6 @@ const AttackItem = ({ pair, index, moveAttack, removeAttack, updateAttack }) => 
     </li>
   );
 };
-
 
 const AttackCalculator = () => {
   const {
@@ -158,6 +199,7 @@ const AttackCalculator = () => {
   };
 
   const moveAttack = (fromIndex, toIndex) => {
+    if (toIndex < 0 || toIndex >= attackPairs.length) return;
     const updated = [...attackPairs];
     const [moved] = updated.splice(fromIndex, 1);
     updated.splice(toIndex, 0, moved);
@@ -165,51 +207,50 @@ const AttackCalculator = () => {
   };
 
   const submitAttackRequest = async () => {
-  if (attackPairs.length === 0) return;
+    if (attackPairs.length === 0) return;
 
-  const calculateTotalCards = (deck) =>
-    Number(deck.Lv0InDeck) +
-    Number(deck.Lv1InDeck) +
-    Number(deck.Lv2InDeck) +
-    Number(deck.Lv3InDeck) +
-    Number(deck.CXInDeck);
+    const calculateTotalCards = (deck) =>
+      Number(deck.Lv0InDeck) +
+      Number(deck.Lv1InDeck) +
+      Number(deck.Lv2InDeck) +
+      Number(deck.Lv3InDeck) +
+      Number(deck.CXInDeck);
 
-  const fullRequest = {
-    attackNameValuePairs: attackPairs,
-    selfDeckInfo: {
-      ...decks.SelfDeckInfo,
-      totalCardsInDeck: calculateTotalCards(decks.SelfDeckInfo),
-    },
-    oppDeckInfo: {
-      ...decks.OppDeckInfo,
-      totalCardsInDeck: calculateTotalCards(decks.OppDeckInfo),
-    },
-    opp2ndDeckInfo: {
-      ...decks.Opp2ndDeckInfo,
-      totalCardsInDeck: calculateTotalCards(decks.Opp2ndDeckInfo),
-    },
-  };
+    const fullRequest = {
+      attackNameValuePairs: attackPairs,
+      selfDeckInfo: {
+        ...decks.SelfDeckInfo,
+        totalCardsInDeck: calculateTotalCards(decks.SelfDeckInfo),
+      },
+      oppDeckInfo: {
+        ...decks.OppDeckInfo,
+        totalCardsInDeck: calculateTotalCards(decks.OppDeckInfo),
+      },
+      opp2ndDeckInfo: {
+        ...decks.Opp2ndDeckInfo,
+        totalCardsInDeck: calculateTotalCards(decks.Opp2ndDeckInfo),
+      },
+    };
 
-  try {
-    const response = await axios.post(
-      `${baseURL}/api/attack/calculate-damage`,
-      fullRequest,
-      { responseType: "blob" }
-    );
-    setImageUrl(URL.createObjectURL(response.data));
-  } catch (error) {
-    if (error.response?.status === 500 && error.response.data instanceof Blob) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        alert("Server error:\n" + reader.result);
-      };
-      reader.readAsText(error.response.data);
-    } else {
-      alert("Unexpected error: " + error.message);
+    try {
+      const response = await axios.post(
+        `${baseURL}/api/attack/calculate-damage`,
+        fullRequest,
+        { responseType: "blob" }
+      );
+      setImageUrl(URL.createObjectURL(response.data));
+    } catch (error) {
+      if (error.response?.status === 500 && error.response.data instanceof Blob) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          alert("Server error:\n" + reader.result);
+        };
+        reader.readAsText(error.response.data);
+      } else {
+        alert("Unexpected error: " + error.message);
+      }
     }
-  }
-};
-
+  };
 
   const methodsToShow = showFinishers ? finisherMethods : basicMethods;
   const currentParams = methodsToShow.find(m => m.method === attackName)?.parameters || [];
@@ -281,7 +322,7 @@ const AttackCalculator = () => {
                   <AttackItem
                     key={`${pair.AttackName}-${index}`}
                     index={index}
-                    pair={pair}
+                    pair={{ ...pair, total: attackPairs.length }}
                     moveAttack={moveAttack}
                     removeAttack={removeAttack}
                     updateAttack={(i, newArgs) => {
