@@ -144,8 +144,16 @@ namespace MyWebApp
         public int Hime(int soul) =>
             damages.IcyTail_Ping(6, 1) + damages.Swing(soul);
 
-        public int Mai(int soul) =>
-            damages.Swing(soul) + Mai_icy(2, 2) * 3;
+        public int Mai(int soul)
+        {
+            int swingDamage = 0;
+            int burnDamage = 0;
+            burnDamage += Mai_icy(2, 2);
+            burnDamage += Mai_icy(2, 2);
+            burnDamage += Mai_icy(2, 2);
+            swingDamage = damages.Swing(soul);
+            return burnDamage + swingDamage;
+        }
 
         public int Mai_icy(int count, int damage)
         {
@@ -174,12 +182,11 @@ namespace MyWebApp
         private int IcyTail_N(int soul) =>
             damages.IcyTail(4) + damages.Swing(soul);
 
-        public int Mill_Top_IcyTail(int soul)
+        public int Mill_Top_IcyTail(int amount)
         {
-            int swing = damages.Swing(soul);
-            var (removed, refresh) = damages._millTop(4);
+            var (removed, refresh) = damages._millTop(amount);
             int burnCount = removed.Count(c => c.Type == Card.CardType.CX);
-            return swing + damages.Burn(burnCount) + (refresh ? 1 : 0);
+            return damages.Burn(burnCount) + (refresh ? 1 : 0);
         }
 
         public int Nagi(int soul)
