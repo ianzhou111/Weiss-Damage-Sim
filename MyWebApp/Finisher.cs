@@ -81,7 +81,7 @@ namespace MyWebApp
         public int Tsuzuri(int soul)
         {
             int refresh = 0;
-            var (removed, didRefresh) = damages.MillBottom(3);
+            var (removed, didRefresh) = damages.Mill_Bottom(3);
             if (didRefresh) refresh += 1;
 
             bool hitCx = removed.Exists(card => card.Type == Card.CardType.CX);
@@ -107,14 +107,14 @@ namespace MyWebApp
             {
                 canceled = true;
                 damages.ResetCancelFlag();
-                burn += damages.MusashiBurnMill(1);
+                burn += damages.MusashiBurn_Mill(1);
             }
 
             swing += damages.Swing(newSoul);
             if (damages.DamageCanceled && !canceled)
             {
                 damages.ResetCancelFlag();
-                burn += damages.MusashiBurnMill(1);
+                burn += damages.MusashiBurn_Mill(1);
             }
 
             return swing + burn + refresh;
@@ -129,7 +129,7 @@ namespace MyWebApp
             if (damages.DamageCanceled)
             {
                 damages.ResetCancelFlag();
-                burn += damages.MusashiBurnMill(1);
+                burn += damages.MusashiBurn_Mill(1);
             }
 
             return swing + burn + refresh;
@@ -149,7 +149,7 @@ namespace MyWebApp
 
         public int Mai_icy(int count, int damage)
         {
-            var (removed, refreshed) = damages.MillBottom(count);
+            var (removed, refreshed) = damages.Mill_Bottom(count);
             bool hasCx = removed.Exists(c => c.Type == Card.CardType.CX);
             int burn = hasCx ? damages.Burn(damage) : 0;
             return burn + (refreshed ? 1 : 0);
@@ -160,7 +160,7 @@ namespace MyWebApp
             int burn = 0, refresh = 0;
             for (int i = 0; i < 3; i++)
             {
-                var (removed, r) = damages.MillBottom(1);
+                var (removed, r) = damages.Mill_Bottom(1);
                 if (r) refresh++;
                 if (removed[0].Level == 0)
                     burn += damages.Burn(1);
@@ -168,16 +168,16 @@ namespace MyWebApp
             return damages.Swing(soul) + burn + refresh;
         }
 
-        public int Akane_T(int soul) =>
+        private int Akane_T(int soul) =>
             damages.IcyTail_Ping_lv0(3, 1) + damages.Swing(soul);
 
-        public int IcyTail_N(int soul) =>
+        private int IcyTail_N(int soul) =>
             damages.IcyTail(4) + damages.Swing(soul);
 
-        public int MillTopIcyTail(int soul)
+        public int Mill_Top_IcyTail(int soul)
         {
             int swing = damages.Swing(soul);
-            var (removed, refresh) = damages.MillTop(4);
+            var (removed, refresh) = damages.Mill_Top(4);
             int burnCount = removed.Count(c => c.Type == Card.CardType.CX);
             return swing + damages.Burn(burnCount) + (refresh ? 1 : 0);
         }
@@ -196,7 +196,7 @@ namespace MyWebApp
             return swing;
         }
 
-        public int TopRoad(int soul)
+        public int Top_Road(int soul)
         {
             int swing = damages.Swing(soul);
             int burn = 0;
@@ -215,7 +215,7 @@ namespace MyWebApp
             return swing + burn;
         }
 
-        public int KarenChan(int soul)
+        public int Karen_Chan(int soul)
         {
             int burn = damages.Burn(1);
             damages.Moca(2);

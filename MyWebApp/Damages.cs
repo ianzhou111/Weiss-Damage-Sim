@@ -167,7 +167,7 @@ namespace MyWebApp
             return burnDamage + refreshPenalty;
         }
 
-        public (List<Card> removedCards, bool causedRefresh) MillBottom(int count)
+        public (List<Card> removedCards, bool causedRefresh) Mill_Bottom(int count)
         {
             List<Card> removedCards = new List<Card>();
             bool causedRefresh = false;
@@ -206,7 +206,7 @@ namespace MyWebApp
             return (removedCards, causedRefresh);
         }
 
-        public (List<Card> removedCards, bool causedRefresh) MillTop(int count)
+        public (List<Card> removedCards, bool causedRefresh) Mill_Top(int count)
         {
             List<Card> removedCards = new List<Card>();
             bool causedRefresh = false;
@@ -250,7 +250,7 @@ namespace MyWebApp
             int burnDamge = 0;
             int refreshdamage = 0;
 
-            (List<Card> removedCards, bool refresh) = MillBottom(value);
+            (List<Card> removedCards, bool refresh) = Mill_Bottom(value);
             if (refresh) refreshdamage += 1;
 
             int burnCount = 0;
@@ -268,7 +268,7 @@ namespace MyWebApp
             int burnDamge = 0;
             int refreshdamage = 0;
 
-            (List<Card> removedCards, bool refresh) = MillBottom(value);
+            (List<Card> removedCards, bool refresh) = Mill_Bottom(value);
             if (refresh) refreshdamage += 1;
 
             int burnCount = 0;
@@ -287,7 +287,7 @@ namespace MyWebApp
             int burnDamge = 0;
             int refreshdamage = 0;
 
-            (List<Card> removedCards, bool refresh) = MillBottom(cards);
+            (List<Card> removedCards, bool refresh) = Mill_Bottom(cards);
             if (refresh) refreshdamage += 1;
 
             foreach (Card removedCard in removedCards)
@@ -303,7 +303,7 @@ namespace MyWebApp
             int burnDamge = 0;
             int refreshdamage = 0;
 
-            (List<Card> removedCards, bool refresh) = MillBottom(cards);
+            (List<Card> removedCards, bool refresh) = Mill_Bottom(cards);
             if (refresh) refreshdamage += 1;
 
             foreach (Card removedCard in removedCards)
@@ -314,7 +314,7 @@ namespace MyWebApp
             return burnDamge + refreshdamage;
         }
 
-        public int CancelBurn(int value)
+        public int Cancel_Burn(int value)
         {
             if (damageCanceled)
             {
@@ -324,14 +324,14 @@ namespace MyWebApp
             else return 0;
         }
 
-        public int MusashiBurn(int plusVal)
+        public int Musashi_Burn(int plusVal)
         {
             var topCard = ownDeck[0];
             return Burn(topCard.Level+plusVal);
 
         }
 
-        public int MusashiBurnMill(int plusVal)
+        public int MusashiBurn_Mill(int plusVal)
         {
             var topCard = ownDeck[0];
             ownDeck.RemoveAt(0);
@@ -340,7 +340,7 @@ namespace MyWebApp
         }
 
 
-        public int ClockKick(int amount)
+        public int Clock_Kick(int amount)
         {
             int refreshPenalty = 0;
             if (oppDeck.Count == 0)
