@@ -103,7 +103,9 @@ namespace MyWebApp.Controllers
         {
             var methodData = typeof(Damages)
                 .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)
-                .Where(m => !m.Name.StartsWith("_")) // 🚫 Exclude internal/private-style methods
+                .Where(m =>
+                    !m.Name.StartsWith("_", StringComparison.OrdinalIgnoreCase) &&
+                    !m.Name.StartsWith("Get", StringComparison.OrdinalIgnoreCase)) // 🚫 Exclude internal/private-style methods
                 .Select(m => new
                 {
                     Method = m.Name,
@@ -121,7 +123,9 @@ namespace MyWebApp.Controllers
         {
             var methodData = typeof(Finishers)
                 .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)
-                .Where(m => !m.Name.StartsWith("_")) // 🚫 Exclude internal/private-style methods
+                .Where(m =>
+                    !m.Name.StartsWith("_", StringComparison.OrdinalIgnoreCase) &&
+                    !m.Name.StartsWith("Get", StringComparison.OrdinalIgnoreCase)) // 🚫 Exclude internal/private-style methods
                 .Select(m => new
                 {
                     Method = m.Name,
