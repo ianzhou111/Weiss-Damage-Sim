@@ -291,5 +291,25 @@ namespace MyWebApp
 
             return swing + burn;
         }
+
+        public int Bocchi(int soul)
+        {
+            int swingDamage = 0;
+            int burnDamage = 0;
+            var cards = damages._millOwnTop(2);
+            for(int i = 0; i < 2;i++)
+            {
+                if (cards.removedCards[i].Type == Card.CardType.CX)
+                {
+                    burnDamage += damages.Burn(2);
+                }
+                else
+                {
+                    burnDamage += damages.Burn(1);
+                }
+            }
+            swingDamage += damages.Swing(soul);
+            return swingDamage + burnDamage;
+        }
     }
 }

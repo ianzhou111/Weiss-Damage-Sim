@@ -286,6 +286,45 @@ namespace MyWebApp
             return (removedCards, causedRefresh);
         }
 
+        public (List<Card> removedCards, bool causedRefresh) _millOwnTop(int count)
+        {
+            List<Card> removedCards = new List<Card>();
+            bool causedRefresh = false;
+
+            // Check if the requested count exceeds the number of cards in the opponent's deck
+            if (count > ownDeck.Count)
+            {
+                // If so, trigger a deck refresh
+                causedRefresh = true;
+                int cardsToMill = ownDeck.Count;
+
+                // Remove all the cards from the deck
+                for (int i = 0; i < cardsToMill; i++)
+                {
+                    removedCards.Add(ownDeck[0]);
+                    ownDeck.RemoveAt(0);
+                }
+
+                // Refresh the self's deck after it gets emptied
+                DeckInitializer.InitializeSelfDeck(ownDeck, selfDeckInfo);
+
+                // Add the remaining cards requested from the top of the new refreshed deck
+                count -= cardsToMill;
+            }
+
+            // Continue removing the remaining cards if necessary
+            for (int i = 0; i < count; i++)
+            {
+                if (ownDeck.Count > 0)
+                {
+                    removedCards.Add(ownDeck[0]);
+                    ownDeck.RemoveAt(0);
+                }
+            }
+
+            return (removedCards, causedRefresh);
+        }
+
         public int Mill_Top(int count)
         {
             List<Card> removedCards = new List<Card>();
