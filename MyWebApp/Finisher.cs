@@ -317,7 +317,7 @@ namespace MyWebApp
             int swingDamage = 0;
             int burnDamage = 0;
             burnDamage += damages.Burn(1);
-            (var cards, bool refr) = damages._millBottom(memoryCount-1);
+            (var cards, bool refr) = damages._millBottom(memoryCount > 1 ? memoryCount - 1:0);
             if (refr) burnDamage++;
             if(cards.Any(x=>x.Type is Card.CardType.CX))
             {
@@ -338,6 +338,17 @@ namespace MyWebApp
             {
                 burnDamage += damages.Burn(1);
             }
+            swingDamage += damages.Swing(soul);
+            return swingDamage + burnDamage;
+        }
+
+        public int Saki(int soul)
+        {
+            int swingDamage = 0;
+            int burnDamage = 0;
+            burnDamage += damages.Burn(4);
+
+            damages._oppDeck.Insert(0, new Card(Card.CardType.DMG, 3, 0));
             swingDamage += damages.Swing(soul);
             return swingDamage + burnDamage;
         }
