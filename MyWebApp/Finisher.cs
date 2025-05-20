@@ -311,5 +311,35 @@ namespace MyWebApp
             swingDamage += damages.Swing(soul);
             return swingDamage + burnDamage;
         }
+
+        public int Temari(int soul, int memoryCount)
+        {
+            int swingDamage = 0;
+            int burnDamage = 0;
+            burnDamage += damages.Burn(1);
+            (var cards, bool refr) = damages._millBottom(memoryCount-1);
+            if (refr) burnDamage++;
+            if(cards.Any(x=>x.Type is Card.CardType.CX))
+            {
+                burnDamage += damages.Burn(1);
+            }
+            swingDamage += damages.Swing(soul);
+            return swingDamage + burnDamage;
+        }
+
+        public int Sumika(int soul)
+        {
+            int swingDamage = 0;
+            int burnDamage = 0;
+            burnDamage += damages.Burn(2);
+            (var cards, bool refr) = damages._millBottom(1);
+            if(refr) burnDamage++;
+            if (cards[0].Level <= 2 && cards[0].Type is not Card.CardType.CX)
+            {
+                burnDamage += damages.Burn(1);
+            }
+            swingDamage += damages.Swing(soul);
+            return swingDamage + burnDamage;
+        }
     }
 }
