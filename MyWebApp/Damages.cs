@@ -208,6 +208,18 @@ namespace MyWebApp
             return (removedCards, causedRefresh);
         }
 
+        public int Mill_Bottom_Burn(int count, int damage)
+        {
+            int burnDamage = 0;
+            (var cards, bool refr) = _millBottom(count);
+            if (refr) burnDamage++;
+            if (cards.Any(x => x.Type is Card.CardType.CX))
+            {
+                burnDamage += Burn(damage);
+            }
+            return burnDamage;
+        }
+
         public int Mill_Bottom(int count)
         {
             List<Card> removedCards = new List<Card>();
