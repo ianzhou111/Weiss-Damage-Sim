@@ -342,6 +342,21 @@ namespace MyWebApp
             return swingDamage + burnDamage;
         }
 
+        public int Lilja(int soul, int top)
+        {
+            int swingDamage = 0;
+            swingDamage += damages.Swing(soul);
+            if (top > 0) {
+                damages._oppDeck.Add(new Card(Card.CardType.DMG, 2, 0));
+            }
+            else
+            {
+                damages._oppDeck.Insert(0,new Card(Card.CardType.DMG, 2, 0));
+            }
+            
+            return swingDamage;
+        }
+
         public int Saki(int soul)
         {
             int swingDamage = 0;
