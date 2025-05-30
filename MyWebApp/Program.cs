@@ -18,7 +18,7 @@ namespace MyWebApp
 
             // Register services
             builder.Services.AddControllers();
-            builder.Services.AddSingleton<AttackService>();
+            builder.Services.AddTransient<AttackService>();
 
             // ✅ CORS policies
             builder.Services.AddCors(options =>
