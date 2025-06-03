@@ -11,7 +11,7 @@ namespace MyWebApp.Services
 {
     public class AttackService
     {
-        private const int simulations = 3000;
+        private const int simulations = 200000;
         private List<Card> oppDeck;
         private List<Card> selfDeck;
         private List<Card> opp2ndDeck;
