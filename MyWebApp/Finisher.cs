@@ -196,7 +196,13 @@ namespace MyWebApp
             swing += damages.Swing_ReturnSoul(soul, out newSoul);
 
             for (int i = 0; i < 3; i++)
-                damages._oppDeck.Add(new Card(Card.CardType.DMG, 0, 0));
+            {
+                if (damages._oppDeck[i].Type == Card.CardType.CX)
+                {
+                    damages._oppDeck.RemoveAt(i);
+                }
+            }
+                
             damages.ShuffleOppDeck();
 
             swing += damages.Swing(newSoul);
