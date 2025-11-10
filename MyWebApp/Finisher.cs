@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using MyWebApp.Models;
 
@@ -197,6 +197,7 @@ namespace MyWebApp
 
             for (int i = 0; i < 3; i++)
             {
+                if (damages._oppDeck.Count <= i) continue;
                 if (damages._oppDeck[i].Type == Card.CardType.CX)
                 {
                     damages._oppDeck.RemoveAt(i);
@@ -206,6 +207,55 @@ namespace MyWebApp
             damages.ShuffleOppDeck();
 
             swing += damages.Swing(newSoul);
+            return swing;
+        }
+
+        public int Nagi_MocaFirst(int soul)
+        {
+            int swing = 0;
+            int newSoul;
+            swing += damages.Swing_ReturnSoul(soul, out newSoul);
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (damages._oppDeck.Count <= i) continue;
+                if (damages._oppDeck[i].Type == Card.CardType.CX)
+                {
+                    damages._oppDeck.RemoveAt(i);
+                }
+            }
+
+            damages.ShuffleOppDeck();
+
+            swing += damages.Swing_ReturnSoul(soul, out newSoul);
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (damages._oppDeck.Count <= i) continue;
+                if (damages._oppDeck[i].Type == Card.CardType.CX)
+                {
+                    damages._oppDeck.RemoveAt(i);
+                }
+            }
+
+            damages.ShuffleOppDeck();
+
+            swing += damages.Swing_ReturnSoul(soul, out newSoul);
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (damages._oppDeck.Count <= i) continue;
+                if (damages._oppDeck[i].Type == Card.CardType.CX)
+                {
+                    damages._oppDeck.RemoveAt(i);
+                }
+            }
+
+            damages.ShuffleOppDeck();
+
+            swing += damages.Swing(soul);
+            swing += damages.Swing(soul);
+            swing += damages.Swing(soul);
             return swing;
         }
 
@@ -372,6 +422,42 @@ namespace MyWebApp
             damages._oppDeck.Insert(0, new Card(Card.CardType.DMG, 3, 0));
             swingDamage += damages.Swing(soul);
             return swingDamage + burnDamage;
+        }
+
+        public int Kaori(int soul)
+        {
+            damages._resetCancelFlag();
+            bool canceledOnce = false;
+            int burn = damages.Burn(1);
+            if (damages._damageCanceled)
+            {
+                canceledOnce = true;
+                damages._resetCancelFlag();
+                burn += damages.Burn(2);
+            }
+
+            int swing = damages.Swing(soul);
+
+            if (damages._damageCanceled && !canceledOnce)
+            {
+                damages._resetCancelFlag();
+                burn += damages.Burn(2);
+            }
+
+            return burn + swing;
+        }
+
+        public int makoto_key(int soul)
+        {
+            damages._resetCancelFlag();
+            int burn = damages.IcyTail(5);
+            int swing = damages.Swing_ReturnSoul(soul,out int newSoul);
+            if (damages._damageCanceled)
+            {
+                burn += damages.IcyTail(5);
+                swing+= damages.Swing(newSoul);
+            }
+            return burn + swing;
         }
     }
 }
