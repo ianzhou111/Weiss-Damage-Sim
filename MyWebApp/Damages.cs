@@ -508,6 +508,13 @@ namespace MyWebApp
             return 0;
         }
 
+        public int Place_OnTop(int amount)
+        {
+            for (int i = 0; i < amount; i++)
+                oppDeck.Insert(0, new Card(Card.CardType.DMG, 0, 0));
+            return 0;
+        }
+
         private void shuffleDeck(List<Card> deck)
         {
             int n = deck.Count;
