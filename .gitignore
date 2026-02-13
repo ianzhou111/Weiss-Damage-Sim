@@ -1,0 +1,46 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build folders
+bin/
+obj/
+
+# Rider/IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Node
+node_modules/
+ClientApp/dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+
+# OneDrive temp
+~$*
+
+# Ignore compiled assets
+wwwroot/assets/
+
+# Ignore NuGet packages
+*.nupkg
+
+# Ignore test results
+TestResults/
+
+# Lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock

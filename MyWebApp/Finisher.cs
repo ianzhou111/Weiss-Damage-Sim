@@ -447,6 +447,22 @@ namespace MyWebApp
             return burn + swing;
         }
 
+        public int Jun_Assault_Lily(int soul)
+        {
+            damages._resetCancelFlag();
+            int burn = 0;
+            burn += damages.Burn(1);
+            if (!damages._damageCanceled)
+            {
+                burn += damages.Burn(2);
+                if (!damages._damageCanceled)
+                {
+                    burn += damages.Burn(3);
+                }
+            }
+            return burn + damages.Swing(soul);
+        }
+
         public int makoto_key(int soul)
         {
             damages._resetCancelFlag();
