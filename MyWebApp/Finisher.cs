@@ -25,6 +25,38 @@ namespace MyWebApp
             return burn + swing;
         }
 
+        public int Tenma_saki(int soul){
+            int burn = 0;
+            int cancelBurnCount = 0;
+            int swing1 = damages.Swing(soul);
+            if (damages._damageCanceled)
+            {
+                damages._resetCancelFlag();
+                burn += damages.Burn(1);
+                cancelBurnCount++;
+                if (damages._damageCanceled)
+                {
+                    damages._resetCancelFlag();
+                    burn += damages.Burn(1);
+                    cancelBurnCount++;
+                }
+            }
+            int swing2 = damages.Swing(soul);
+            if (damages._damageCanceled&& cancelBurnCount < 2)
+            {
+                damages._resetCancelFlag();
+                burn += damages.Burn(1);
+                cancelBurnCount++;
+                if (damages._damageCanceled && cancelBurnCount < 2)
+                {
+                    damages._resetCancelFlag();
+                    burn += damages.Burn(1);
+                    cancelBurnCount++;
+                }
+            }
+            return swing1 + swing2 + burn;
+        }
+
         public int Kana_plus_Event_Burn(int soul)
         {
             bool canceledOnce = false;
