@@ -27,7 +27,7 @@ namespace MyWebApp
 
         public int Tenma_saki(int soul){
             int burn = 0;
-            int h = 0;
+            int cancelBurnCount = 0;
             int swing1 = damages.Swing(soul);
             if (damages._damageCanceled)
             {
