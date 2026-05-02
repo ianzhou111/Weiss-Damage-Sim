@@ -140,6 +140,8 @@ const AttackCalculator = () => {
   const [showFinishers, setShowFinishers] = useState(false);
   const [argValues, setArgValues] = useState([]);
   const [isCooldown, setIsCooldown] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [graphSuccess, setGraphSuccess] = useState(false);
 
   const listRef = useRef(null);
 
@@ -172,6 +174,12 @@ const AttackCalculator = () => {
       listRef.current.scrollTop = listRef.current.scrollHeight;
     }
   }, [attackPairs]);
+
+  useEffect(() => {
+    if (!graphSuccess) return;
+    const timer = setTimeout(() => setGraphSuccess(false), 3000);
+    return () => clearTimeout(timer);
+  }, [graphSuccess]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -210,6 +218,9 @@ const AttackCalculator = () => {
   const submitAttackRequest = async () => {
     if (attackPairs.length === 0) return;
 
+    setIsLoading(true);
+    setGraphSuccess(false);
+
     const calculateTotalCards = (deck) =>
       Number(deck.Lv0InDeck) +
       Number(deck.Lv1InDeck) +
@@ -240,6 +251,7 @@ const AttackCalculator = () => {
         { responseType: "blob" }
       );
       setImageUrl(URL.createObjectURL(response.data));
+      setGraphSuccess(true);
     } catch (error) {
       if (error.response?.status === 500 && error.response.data instanceof Blob) {
         const reader = new FileReader();
@@ -250,6 +262,8 @@ const AttackCalculator = () => {
       } else {
         alert("Unexpected error: " + error.message);
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -338,16 +352,31 @@ const AttackCalculator = () => {
 
             <button
               onClick={() => {
-                if (isCooldown) return;
+                if (isCooldown || isLoading) return;
                 setIsCooldown(true);
                 setTimeout(() => setIsCooldown(false), 300);
                 submitAttackRequest();
               }}
-              disabled={isCooldown}
-              style={{ opacity: isCooldown ? 0.5 : 1 }}
+              disabled={isCooldown || isLoading}
+              style={{ opacity: isCooldown || isLoading ? 0.5 : 1 }}
             >
-              Calculate Damage
+              {isLoading ? "Calculating..." : "Calculate Damage"}
             </button>
+
+            <div className="generation-status">
+              {isLoading && (
+                <div className="status-row">
+                  <div className="spinner" />
+                  <span>Waiting for backend response...</span>
+                </div>
+              )}
+              {!isLoading && graphSuccess && (
+                <div className="status-row success">
+                  <span className="success-check">✔</span>
+                  <span>Graph generated successfully!</span>
+                </div>
+              )}
+            </div>
           </div>
 
           {imageUrl && (

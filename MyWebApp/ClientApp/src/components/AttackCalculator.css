@@ -321,7 +321,51 @@ button {
     background-color: #1e3a8a;
     color: #fff;
   }
-  
 
-  
+  .generation-status {
+    margin-top: 12px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    color: #ddd;
+    font-size: 14px;
+  }
 
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .success {
+    color: #8de68d;
+  }
+
+  .success-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: #1f5f1f;
+    border-radius: 50%;
+    color: #e8ffe8;
+    font-weight: bold;
+  }
+
+  .spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
