@@ -332,6 +332,16 @@ button {
       max-width: 100%;
     }
   }
+
+  .up-button,
+  .down-button {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 6px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
     padding: 0;
     margin-left: 4px;
     display: flex;
