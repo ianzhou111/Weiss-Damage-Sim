@@ -4,21 +4,22 @@ body {
     color: #ffffff;
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 20px 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden; /* Prevents unnecessary scrolling */
+    align-items: flex-start;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 /* Flexbox container for main content */
 .attack-calculator-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
-    height: 100vh;
+    min-height: calc(100vh - 40px);
     padding: 20px;
     box-sizing: border-box;
 }
@@ -282,15 +283,55 @@ button {
     background: #3a3a3a;
   }
 
-  .up-button,
-  .down-button {
-    width: 36px;             /* wider for easier clicking */
-    height: 36px;
-    min-width: 36px;         /* ensures consistent sizing */
-    border-radius: 6px;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
+  @media (max-width: 900px) {
+    .attack-main-content {
+      flex-direction: column;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .attack-calculator,
+    .attack-graph-container {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .attack-calculator {
+      padding: 16px;
+    }
+
+    .attack-graph-container {
+      margin-top: 20px;
+      padding: 16px;
+    }
+
+    .attack-item {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .attack-box {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .attack-text {
+      overflow: visible;
+      white-space: normal;
+    }
+
+    .status-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .attack-graph-image {
+      max-width: 100%;
+    }
+  }
     padding: 0;
     margin-left: 4px;
     display: flex;

@@ -5,6 +5,22 @@
   text-align: center;
 }
 
+.app-container {
+  display: flex;
+  margin-left: 250px;
+}
+
+@media (max-width: 900px) {
+  #root {
+    padding: 1rem;
+  }
+
+  .app-container {
+    flex-direction: column;
+    margin-left: 0;
+  }
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

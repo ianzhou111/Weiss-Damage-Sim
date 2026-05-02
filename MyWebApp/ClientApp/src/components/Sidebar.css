@@ -11,6 +11,28 @@
     transform: translateX(0); /* Ensures it stays open */
 }
 
+@media (max-width: 900px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    top: 0;
+    transform: none;
+  }
+
+  .menu {
+    margin-top: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .menu a {
+    padding: 10px 14px;
+  }
+}
+
 /* Removes toggle button since it’s always open */
 .toggle-btn {
     display: none;
