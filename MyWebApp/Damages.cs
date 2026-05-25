@@ -500,6 +500,20 @@ namespace MyWebApp
             return 0;
         }
 
+        public int Moca_send2bottom(int amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                if (oppDeck[i].Type == Card.CardType.CX)
+                {
+                    var card = oppDeck[i];
+                    oppDeck.RemoveAt(i);
+                    oppDeck.Add(card);
+                }
+            }
+            return 0;
+        }
+
         public int Shuffle_Back_Non_CX(int amount)
         {
             for (int i = 0; i < amount; i++)
