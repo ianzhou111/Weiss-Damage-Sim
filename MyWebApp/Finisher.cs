@@ -507,5 +507,18 @@ namespace MyWebApp
             }
             return burn + swing;
         }
+
+        public int Ais(int soul)
+        {
+            int swing = damages.Swing(soul);
+
+            var (milled, didRefresh) = damages._millTop(1);
+            int refreshDamage = didRefresh ? 1 : 0;
+            int burn = damages.Burn(milled[0].Level + 1);
+
+            int clockKick = damages.Clock_Kick(1);
+
+            return swing + burn + refreshDamage + clockKick;
+        }
     }
 }
