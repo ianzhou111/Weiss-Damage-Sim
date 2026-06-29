@@ -520,5 +520,22 @@ namespace MyWebApp
 
             return swing + burn + refreshDamage + clockKick;
         }
+
+        public int Shiki(int soul)
+        {
+            var (milled, didRefresh) = damages._millBottom(1);
+            int refreshDamage = didRefresh ? 1 : 0;
+
+            int burn = 0;
+            if (milled[0].Level <= 1)
+                burn += damages.Burn(2);
+            else
+                for (int i = 0; i < 3; i++)
+                    burn += damages.Burn(1);
+
+            int swing = damages.Swing(soul);
+
+            return burn + refreshDamage + swing;
+        }
     }
 }
