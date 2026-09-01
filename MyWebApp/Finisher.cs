@@ -553,5 +553,20 @@ namespace MyWebApp
 
             return burn + swing;
         }
+
+        public int Frieren_Support()
+        {
+            int deckSize = damages._oppDeck.Count;
+            int startIdx = deckSize - 1;
+            int endIdx = Math.Max(0, deckSize - 2);
+
+            for (int i = startIdx; i >= endIdx; i--)
+            {
+                if (damages._oppDeck[i].Type != Card.CardType.CX)
+                    damages._oppDeck.RemoveAt(i);
+            }
+
+            return 0;
+        }
     }
 }
