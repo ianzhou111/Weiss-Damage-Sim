@@ -537,5 +537,21 @@ namespace MyWebApp
 
             return burn + refreshDamage + swing;
         }
+
+        public int Himmel_new(int soul)
+        {
+            // On-attack top check: if CX, send to bottom
+            if (damages._oppDeck.Count > 0 && damages._oppDeck[0].Type == Card.CardType.CX)
+            {
+                var card = damages._oppDeck[0];
+                damages._oppDeck.RemoveAt(0);
+                damages._oppDeck.Add(card);
+            }
+
+            int burn = damages.IcyTail_Ping(3, 2);
+            int swing = damages.Swing(soul);
+
+            return burn + swing;
+        }
     }
 }
