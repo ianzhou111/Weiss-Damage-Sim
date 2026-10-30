@@ -34,7 +34,12 @@ const getInitialDecks = () => {
   const saved = localStorage.getItem("weiss-decks");
   if (saved) {
     try {
-      return JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      return {
+        SelfDeckInfo: { ...defaultSelfDeck, ...parsed.SelfDeckInfo },
+        OppDeckInfo: { ...defaultOppDeck, ...parsed.OppDeckInfo },
+        Opp2ndDeckInfo: { ...defaultOpp2ndDeck, ...parsed.Opp2ndDeckInfo },
+      };
     } catch (e) {
       console.error("Failed to parse saved deck:", e);
     }
