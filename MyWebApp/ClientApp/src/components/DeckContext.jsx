@@ -9,6 +9,7 @@ const defaultSelfDeck = {
   Lv3InDeck: "5",
   CXInDeck: "7",
   SoulTriggersInDeck: "8",
+  CXSoulTriggersInDeck: "0",
 };
 
 const defaultOppDeck = {

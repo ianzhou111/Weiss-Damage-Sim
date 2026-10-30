@@ -32,6 +32,11 @@ const SetupDecks = () => {
         return;
       }
     }
+    const self = decks.SelfDeckInfo;
+    if (Number(self.CXSoulTriggersInDeck || 0) > Number(self.CXInDeck || 0)) {
+      alert("CX Soul Triggers cannot exceed CX In Deck!");
+      return;
+    }
     alert("✅ Decks Saved! ✅");
   };
 

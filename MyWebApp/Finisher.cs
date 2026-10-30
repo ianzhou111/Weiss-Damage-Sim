@@ -581,7 +581,7 @@ namespace MyWebApp
         private (int swing, int burn) DoubleTriggerAttack(int soul)
         {
             damages.RefreshOwnDeckIfEmpty();
-            if (damages._ownDeck[0].SoulTrigger == 0 && damages._ownDeck[0].Type != Card.CardType.CX)
+            if (damages._ownDeck[0].SoulTrigger == 0)
                 damages._ownDeck.RemoveAt(0);
 
             var triggerCards = new List<Card>();

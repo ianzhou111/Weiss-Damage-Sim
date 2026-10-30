@@ -36,9 +36,18 @@ namespace MyWebApp
         {
             // Prioritize Soul Triggers for level 3, then level 2, then level 1, then level 0
             int soulTriggers = deckInfo.SoulTriggersInDeck;
+            int cxSoulTriggers = Math.Min(deckInfo.CXSoulTriggersInDeck, deckInfo.CXInDeck);
 
             for (int i = 0; i < deckInfo.CXInDeck; i++)
-                deck.Add(new Card(Card.CardType.CX, 0, 0));  
+            {
+                if (cxSoulTriggers > 0)
+                {
+                    deck.Add(new Card(Card.CardType.CX, 0, 1));
+                    cxSoulTriggers--;
+                }
+                else
+                    deck.Add(new Card(Card.CardType.CX, 0, 0));
+            }
 
             // Add Soul Triggers to deck starting from level 3
             for (int i = 0; i < deckInfo.Lv3InDeck; i++)

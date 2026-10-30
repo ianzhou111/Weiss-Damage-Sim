@@ -15,5 +15,8 @@ namespace MyWebApp.Models
         // Number of soul triggers in the deck
         public int SoulTriggersInDeck { get; set; }
 
+        // Number of CX cards that are soul triggers (self deck only)
+        public int CXSoulTriggersInDeck { get; set; }
+
     }
 }
