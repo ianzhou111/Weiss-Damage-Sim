@@ -548,6 +548,44 @@ namespace MyWebApp
 
         // Expose internal decks if absolutely necessary
         public List<Card> _oppDeck => oppDeck;
+        public List<Card> _ownDeck => ownDeck;
+
+        public void RefreshOwnDeckIfEmpty()
+        {
+            if (ownDeck.Count < 1)
+                DeckInitializer.InitializeSelfDeck(ownDeck, selfDeckInfo);
+        }
+
+        // Swing without consuming a trigger card (caller handles triggers manually)
+        public int SwingRaw(int soul)
+        {
+            int swingDamage = 0;
+            int refreshPenalty = 0;
+            damageCanceled = false;
+
+            for (int i = 0; i < soul; i++)
+            {
+                if (oppDeck.Count == 0)
+                    refreshPenalty += _refresh();
+                if (oppDeck[0].Type == Card.CardType.DMG)
+                {
+                    swingDamage++;
+                    oppDeck.RemoveAt(0);
+                }
+                else
+                {
+                    swingDamage = 0;
+                    oppDeck.RemoveAt(0);
+                    damageCanceled = true;
+                    break;
+                }
+            }
+
+            if (oppDeck.Count == 0)
+                refreshPenalty += _refresh();
+
+            return swingDamage + refreshPenalty;
+        }
         public void ShuffleOppDeck()
         {
             shuffleDeck(oppDeck);

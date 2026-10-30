@@ -568,5 +568,77 @@ namespace MyWebApp
 
             return 0;
         }
+
+        public int Full_Dorothy(int soul)
+        {
+            var (swing1, burn1) = DoubleTriggerAttack(soul);
+            var (swing2, burn2) = DoubleTriggerAttack(soul);
+            var (swing3, burn3) = SingleTriggerAttack(soul);
+            return swing1 + burn1 + swing2 + burn2 + swing3 + burn3;
+        }
+
+        // Attacker 1 & 2: check top (mill if no soul trigger), then 2 triggers, swing, cancel burn
+        private (int swing, int burn) DoubleTriggerAttack(int soul)
+        {
+            damages.RefreshOwnDeckIfEmpty();
+            if (damages._ownDeck[0].SoulTrigger == 0 && damages._ownDeck[0].Type != Card.CardType.CX)
+                damages._ownDeck.RemoveAt(0);
+
+            var triggerCards = new List<Card>();
+            int bonusSoul = 0;
+            for (int i = 0; i < 2; i++)
+            {
+                damages.RefreshOwnDeckIfEmpty();
+                var card = damages._ownDeck[0];
+                damages._ownDeck.RemoveAt(0);
+                triggerCards.Add(card);
+                bonusSoul += card.SoulTrigger;
+            }
+            damages.RefreshOwnDeckIfEmpty();
+
+            int swingDmg = damages.SwingRaw(soul + bonusSoul);
+            int burnDmg = 0;
+            if (damages._damageCanceled)
+            {
+                damages._resetCancelFlag();
+                int x = TriggerCancelX(triggerCards);
+                for (int i = 0; i < x; i++)
+                    burnDmg += damages.Burn(1);
+            }
+            return (swingDmg, burnDmg);
+        }
+
+        // Attacker 3: 1 trigger, swing, cancel burn
+        private (int swing, int burn) SingleTriggerAttack(int soul)
+        {
+            damages.RefreshOwnDeckIfEmpty();
+            var trigCard = damages._ownDeck[0];
+            damages._ownDeck.RemoveAt(0);
+            damages.RefreshOwnDeckIfEmpty();
+
+            int swingDmg = damages.SwingRaw(soul + trigCard.SoulTrigger);
+            int burnDmg = 0;
+            if (damages._damageCanceled)
+            {
+                damages._resetCancelFlag();
+                int x = TriggerCancelX(new List<Card> { trigCard });
+                for (int i = 0; i < x; i++)
+                    burnDmg += damages.Burn(1);
+            }
+            return (swingDmg, burnDmg);
+        }
+
+        private static int TriggerCancelX(List<Card> triggerCards)
+        {
+            int x = 0;
+            foreach (var card in triggerCards)
+            {
+                if (card.Type == Card.CardType.CX)
+                    x += 3;
+                else if (card.SoulTrigger > 0)
+                    x += 2;
+            }
+            return x;
+        }
     }
 }
